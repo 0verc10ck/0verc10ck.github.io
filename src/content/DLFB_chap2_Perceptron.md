@@ -21,7 +21,7 @@ Perceptron은 다수의 신호를 입력으로 받아 하나의 신호를 출력
 
 Perceptron은 신호가 흐른다, 흐르지 않는다(1 과 0) 두개의 값을 가진다.
 
-![2inputPerceptron](https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwj0mKj2_pHlAhU1K6YKHVjsBaEQjRx6BAgBEAQ&url=http%3A%2F%2Fblog.naver.com%2FPostView.nhn%3FblogId%3Dinfoefficien%26logNo%3D221069835408%26parentCategoryNo%3D%26categoryNo%3D367%26viewDate%3D%26isShowPopularPosts%3Dtrue%26from%3Dsearch&psig=AOvVaw00n3t-6rXyyMo5z5U2_vQW&ust=1570807188193841)
+![2inputPerceptron](https://postfiles.pstatic.net/MjAxNzA4MDhfMTAx/MDAxNTAyMjAzNjYxNzc5.sK4JqoJM1DLAWyR5fSFPWQaPLPa6HzjT_8fxxupwplgg.3sX5XGhfkEaJ9ZEkAUkeltjSlK4K2Yds-q_WxKf_xpQg.PNG.infoefficien/image.png?type=w773)
 
 위 그림은 입력으로 2개의 신호를 받는 Perceptron의 예이다.
 
