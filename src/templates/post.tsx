@@ -21,6 +21,7 @@ import IndexLayout from '../layouts';
 import { colors } from '../styles/colors';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
 import config from '../website-config';
+import "katex/dist/katex.min.css"
 
 const PostTemplate = css`
   .site-main {
