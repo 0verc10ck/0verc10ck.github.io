@@ -1,5 +1,5 @@
 ---
-layout: draft
+layout: post
 title: Chap2 - Perceptron
 image: img/callum-shaw-555357-unsplash.jpg
 author: 0verc10ck
@@ -215,5 +215,76 @@ XOR 게이트를 Perceptron으로 만들어 보자.
 
 1. Perceptron의 한계
 
+    XOR은 배타적 논리합을 뜻하는 논리회로이다.
+
+    아래의 표와 같이 XOR은 x_1과 x_2중 한쪽만 True일 때 True의 값을 가진다.
+
+    | x_1 | x_2 | y |
+    | ---------- | :--------- | :----------: |
+    | 0 | 0 | 0 |
+    | 1 | 0 | 1 |
+    | 0 | 1 | 1 |
+    | 1 | 1 | 0 |
+
+    아래 그림은 AND, OR, XOR 게이트의 출력값을 나타낸 그래프이다.
+
+    ![GRAPH](https://miro.medium.com/max/1914/1*Tc8UgR_fjI_h0p3y4H9MwA.png)
+
+    기본적으로 Perceptron은 1차 방정식의 꼴을 띄고 있고, 1차 방정식의 직선은 좌표상의 영역을 둘로 나눈다.
+
+    위 그림의 AND 와 OR 게이트 출력을 나타낸 평며의 경우 Perceptron의 직선이 삼각형과 원 두가지의 출력을 각자 다른 영역으로 나눈다.
+
+    하지만 XOR 게이트의 경우 Perceptron의 직선만으로 삼걱형과 원을 각자 다른 영역으로 나눌 수 없다.
+
+    이를 해결하기 위해서는 Perceptron이 1차 방정식 보다 높은 차원의 방정식을 나타 낼 수 있어야 한다.
 
 
+
+2. Multi-layer Perceptron
+
+    우리는 XOR 게이트를 Perceptron으로 구현하기 위해 Perceptron이 1차 보다높은 차원의 방정식을 표현하게 하고자한다.
+
+    그러기 위해서는 한 Perceptron의 출력이 다른 Perceptron의 입력이 된다면, 앞선 층의 perceptron을 나타내는 1차 방정식이 하나의 변수가 되어 더 높은 차원을 나타 낼 수 있게 된다.
+
+    이러한 방법을 이용하여 앞서 만든 AND, OR, NAND 3개의 게이트를 조합하여 XOR 게이트를 만들 것이다.
+
+    아래 그림과 같이 입력층의 입력이 NAND와 OR 게이트를 거치고 그 결과값이 AND의 입력이 된다.
+
+    ![XOR](https://poddeeplearning.readthedocs.io/ko/latest/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EB%94%A5%EB%9F%AC%EB%8B%9D/2_perceptron_pulpan92_image/image5.png)
+
+    위 그림의 논리게이트에서 NAND의 출력을 s_1, OR의 출력을 s_2라고 하였을 때 XOR의 진리표는 아래와 같다.
+
+    | x_1 | x_2 | s_1 | s_2 | y |
+    | ---------- | :--------- | :----------: | :----------: | ----------: |
+    | 0 | 0 | 1 | 0 | 0 |
+    | 1 | 0 | 1 | 1 | 1 |
+    | 0 | 1 | 1 | 1 | 1 |
+    | 1 | 1 | 0 | 1 | 0 |
+
+
+    위의 논리 회로를 python 코드로 구현하면 다음과 같다.
+    
+    ```python
+      def XOR(x1, x2):
+        s1 = NAND(x1,x2)
+        s2 = OR(x1,x2)
+        y = AND(s1,s2)
+        return y
+    
+      XOR(0, 0) #ans : 0
+      XOR(1, 0) #ans : 1
+      XOR(0, 1) #ans : 1
+      XOR(1, 1) #ans : 0
+    ```
+
+    이로써 Perceptron을 이용한 XOR 게이트가 완성되었다.
+
+    위 Perceptron을 그림으로 나타내면 아래와 같다.
+
+    ![Perceptron](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_65HSdh0oC0BMBGm-22TlHevtz14M4Lt-JztjxGxXEng9Fh0a)
+
+    그림과 같이 최고 층이 2층인 Multi-layer Perceptron에서는 입력층인 0층에서 1층으로 신호가 전달되고, 이어서 1층에서 2층으로 신호가 전달되고, 출력층인 2층에서는 값에 따라 1 또는 0을 출력하게 된다.
+
+    우리는 Perceptron을 2층으로 쌓아 단층 Perceptron에서는 구현 할 수 없었던 XOR 게이트를 구현하였다.
+
+    이처럼 Perceptron을 Multi-layer로 쌓아 올려 더 다양하고, 더 복잡한 문제를 처리 할 수 있다.
