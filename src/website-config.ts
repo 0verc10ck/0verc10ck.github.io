@@ -49,12 +49,12 @@ export interface WebsiteConfig {
 }
 
 const config: WebsiteConfig = {
-  title: 'Ghost',
-  description: 'The professional publishing platform',
+  title: '0verc10ck',
+  description: '0verc10ck your self',
   coverImage: 'img/blog-cover.jpg',
   logo: 'img/ghost-logo.png',
   lang: 'en',
-  siteUrl: 'https://gatsby-casper.netlify.com',
+  siteUrl: 'https://0verc10ck.netlify.com',
   facebook: 'https://www.facebook.com/ghost',
   twitter: 'https://twitter.com/tryghost',
   showSubscribe: true,
