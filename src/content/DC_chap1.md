@@ -3,7 +3,7 @@ layout: post
 title: chap1_Data Communication, Data Networks, and the internet
 image: img/callum-shaw-555357-unsplash.jpg
 author: 0verc10ck
-date: 2019-10-11T10:00:00.000Z
+date: 2019-10-14T10:00:00.000Z
 tags:
   - 데이터 통신
 ---
