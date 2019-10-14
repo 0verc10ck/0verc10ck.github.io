@@ -127,247 +127,111 @@ tags:
 
     TCP/IP protocol suit라고 불리우며, TCP/IP는 Internet의 표준인 대규모 Protocol을 구성한다.
 
-  1. TCP/IP layer
 
-    ![tcp/ip](../content/img/TCP-IP.png)
+  1. TCP/IP Layer
 
-      통신 시스템의 기본적인 목적은 두 사용자 간의 데이터를 교환하는 것이다.
-
-      두 사용자가 통신을 하려면 다양한 조건들과 작업들이 필요하다. 
-
-      아래는 통신이 이루어지는 동안 이루어지는 작업들을 정리한 것이다.
+      통신은 크게 5 level의 layer로 구분된다.
       
-      
-      1. Transmission system utilization(전송 시스템 활용)
-          
-          통신장비들간에 공유되는 전송설비의 효율적 사용을 위한 기술들(multiplexing, congestion control 등)
+      ![tcp_ip](/src/contetn/img/../../content/img/TCP-IP.png)
 
-      2. interfacing(인터페이스 설립)
-      
-          interface : 의사소통이 가능하도록 만들어지는 물리적, 가상적 매개체
+      1. Application Layer : TCP/IP 환경의 사용자 접속을 제공하며, 분산 정보 서비스를 제공한다. Application을 지원하기 위해 필요한 작업들을 다룬다.
 
-      3. Signal Generation(신호 생성)
-      
-         통신을 위한 신호 생성 -> 인터페이스에 적합하게 생성 되어야함
+      2. Transport Layer : 종단간 데이터 전달을 수행하며 오류제어, 흐름제어, 혼잡제어, 신뢰가능한 배달 서비스를 제공한다.
 
-      4. Synchronization(동기화)
-      
-          송수신기 간의 정보 동기화가 과정, 신호의 phase(위상), 주파수, 시간, 코드 등을 일치시킨다.
+      3. Internet Layer : 상위 계층을 네트워크의 물리적 구성의 세부 사항으로 부터 차단하고. 경로지정을 담당하며 서비스 품질과 혼잡 제어를 제공한다.
+
+      4. Network Access/Data Link Layer : 동일한 Network에 접속된 2개의 종단 시스템이 네트워크에 접속하고 데이터를 전달 하는것을 다룬다.
+
+      5. Physical Layer : 데이터 전송 장치와 전송매체 또는 네트워크 사이의 물리적인 Interface를 다룬다. 전송매체의 특성, 신호의 특성, Data rate등과 같은 관련사항을 규정한다.
 
 
-      
-      5. Exchange management(교환 관리)
-      
-          양측이 데이터를 교환할때 필요한 규약(동시전송 혹은 교대 전송, 한번에 전달하는 데이터의 양, 데이터의 형식 등)
-      
-      6. Error detection andcorrection(오류 검출 및 정정)
-      
-          전송과정에서 에러의 발생 여부를 판단하고, 발생한 에러에 대처해야함
-      
-      7. Flow control(흐름 제어)
-      
-          데이터 처리 및 수신 속도 보다 더 빠른 속도로 데이터를 전송하여 오버플로우가 발생하지 않도록 전송 속도를 조절
-      
-      8. Addressing(주소지정)
-      
-          발신시 목적지를 지정
-      
-      9. Routing(경로 배정)
-      
-          신호가 어떠한 경로(라우터, 기지국 등)를 거쳐 목적지에 도달할 것인가를 결정
-      
-      10. Recovery(복구)
-      
-          시스템 결함에 의해 작업이 중단된 경우 작업을 재개하거나 작업 시작 이전으로 되돌려 시스템의 상태를 복원한다.
-      
-      11. Message formatting(메시지 형식화) 
-      
-          전송되는 데이터의 형식을 정한다.
-      
-      12. Security(보안)
-      
-          지정된 수신자 만이 데이터를 열람하고, 데이터의 전송과정에서 변형이 없어야함
-      
-      13. Network management(망 관리)
-      
-          시스템을 구성하고 상태를 감시하고, 결함이나 과부화에 대처하며, 확장 가능성을 염두해 두고 망을 관리해야함
-
-  2. 데이터 통신 모델
-
-      아래 그림은 데이터 통신 과정을 단순화 시킨 것이다.
-
-      ![DC_model](https://image3.slideserve.com/6798333/simplified-data-communications-model-l.jpg)
-
-
-      사용자가 보내고자 하는 메시지 m은 컴퓨터의 입력장치를 통해 메모리 내의 비트집합 g로 변환된다.
-
-      컴퓨터는 LAN 송수신기 또는 모뎀과 같은 입출력장치에 의해 전화회선 같은 전송 매체에 연결 되어 있다.
-
-      입력 데이터 g는 통신 버스나 케이블 상에서 각 비트를 표현하는 전압 변이의 열g(t)로 송신기에 전달된다.
-
-      송신기는 매체에 직접 연결되어 입력열g(t)를 전송에 적합한 신호s(t)로 변환시킨다.
-
-      매체에 뿌려진 전송신호 s(t)는 수신기에 도달하기 전에 여러가지 손상을 입게 된다.
-
-      따라서 수신신호 r(t)는 송신신호 s(t)와 완벽히 일치하지 않는다.
-
-      수신기 r(t)는 매체에 대한 지식을 근거하여 원래의 신호 s(t)를 재현하려 한다.
-
-      s(t)를 재현하여 탄생한 신호 s'(t)로 부터 비트열 g'(t)를 얻어낸다.
-
-      전송과정에서 일어난 data loss가 복구되었다면 g'(t)에 담긴 메시지 m'는 원본 메시지 m을 완벽히 복사한 것일 것이다. 
-
-      만약 그렇지 못하다면 오류가 없는 완전한 데이터를 얻기 위해 발신 시스템과 협조하여 데이터를 복구하고자 할 것이다.
-
-
-  3. 전송 및 전송 매체
+  2. TCP/IP의 동작
   
-      현재 주로 사용되는전송 매체는 크게 두가지로 매체이다.
+      ![tcp_ip](/src/contetn/img/../../content/img/concepts.png)
 
-      1. Fiber optic transmission(광섬유 케이블)
+      위 그림은 TCP/IP Protocol이 어떻게구성되는지를 보여준다.
 
-          Fiber optic transmission은 유선 전송에서 사용되고 있으며
+      Host A의 App X와 Host B의 App x가 통신하는 과정은 다음과 같다.
 
-          정확성이 높고, BER(Bit Error Rate)가 10^-6 정도로 Wireless transmission에 비해 상대적으로 낮다.
+      예를 들어 Host A의 port 3과 연결된 App X가 Host B의 port 2와 연결된 App X로 메시지를 보낸다고 가정해 보자.
 
+      A에 있는 Process는 B의 port 2에 전송하라는 명령과 함께 message를 TCP에 넘길 것이다.
 
-      2. Wireless transmissions(무선 통신)
+      TCP는 메시지를 Host B에게 전달하라는 명령을 추가하여 IP에게 넘긴다.
 
-          무선 통신은 주로 Smartphone이나 Laptop과 같은 Mobile device에서 사용되는 전송 방식이다.
+      이때 IP는 어떤 Port를 찾아가야하는지 알지 못해도 된다. 다만, Host B로 가야한다는 사실만 알고 있으면 된다.
 
-          유선 연결방식인 Fiber optic transmission보다 정확성이 낮고, BER이 10^-3으로 높은 편이다.
+      IP는 Host B에게로 가기 위해 Router J로 전송하라는 명령과 함께 데이터 블록을 NAP로 내려 보낸다.
 
+      NAP를 통해 Router J로 전달된 데이터는 Router J를 거쳐 Host B에 도달하게 된다.
 
-    
+      Host B에서는 Host A가 추가한 정보들을 하나씩 벗겨가며 데이터를 어디 전송해야 하는지 파악하고 데이터를 목적지인 App X에 전달한다.
+      
+      ![PDU](/src/contetn/img/../../content/img/PDU.png)
 
+      위 그림은 데이터가 각 Layer를 거치며 정보가 추가되는 과정을 나타낸 그림이다. 
 
+      전달하고자 하는 원본 데이터는 TCP Layer에서 TCP Header를 추가하여 TCP Segment가 되고, IP Layer에서 IP Header를 추가하여 Datagram이 되고, Network layer에서 Network Header를 추가하여 Packet이 된다.
 
-      컴퓨터/통신 설비의 주요 경비는 전송 경비이다.
 
-      이 때문에 주어진자원을 통해 운반되는 정보량을 최대화 하거나 주어진 정보 통신 요구사항을 만족시키기 위해 필요한 전송 용량을 최소화 하여야 한다.
+  3. TCP/UDP, IPv4/IPv6
 
-      이를 위한 방법이 Multiplexing과 Compression이다.
+      1. TCP/UDP
 
-      Multiplexing은 다수의 기기가 하나의 전송 설비를 공유하는 기술이다.
+          TCP(Transmission Control Protocol)은 대부분의 Application을 위한 Transport layer이다.
 
-      Multiplexing을 이용하면 한정된 전송 설비에서 한번에 전송되는 정보량을 최대화 시킬 수 있다.
+          TCP는 Applicaition 사이의 신뢰적인 데이터 전송을 보장하는 연결을 제공한다.
 
-      Multiplexing 기법은 FDM, TDM, WDM, ATDM, STDM, SDM, CDM 등이 있다.
+          TCP segment는 기본 Protocol unit이다.
 
-      Compression은 데이터의 용량을 더 작게 축소시켜 전송 비용을 최소화 하는 기술이다.
+          TCP는 각 개체의 연결이 지속되는 동안 다른 개체로 부터 오고가는 TCP segment를 추적하여 흐름을 제어하고, 분실 또는 훼손 된 segment를 복구한다.
 
+          UDP(User Datagram Protocol)은 TCP의 대용으로 사용된다.
 
-  4. 네트워크 유형
+          UDP는 전송의 순서, 중복전달 방지가 보장되지 않는다.
 
-      1. LAN(Local Area Networks)
+          UDP는 최소한의 protocol 기법을 이용하여 두 procdure 사이의 통신을 가능하게 한다.
 
-          LAN은 다양한 장치를 상호 연결하는 통신망으로서, 이들 장치간의 정보 교환 수단으로 이용된다.
+          주로 SNMP(Simple Network Management Protocol)과 함께 사용된다.
 
-          LAN은 상대적으로 좁은 지역을 담당하며, WAN에 비해 높은 내부 데이터율을 보인다.
+          데이터의 오류를 확인하는 checksum가지고 있으며, 기본적으로 IP에 port 지정 기능을 추가하는 정도로 사용된다.
 
-          LAN은 Ethernet을 주요 프로토콜로 사용하며 보통 100mbps 이상의 빠른 전송 속도를 보인다.
+          아래 그림은 TCP와 UDP Header의 구조이다.
 
-      2. WAN(Wide Area Networks)
+          ![TCP/UDP](/src/contetn/img/../../content/img/tcpdup.png)
 
-          WAN은 넓은 지역을 담당하며, 공중 선로 부지를 거치고 공통 통신 사업자에 의해 제공되는 회선을 최소한으로 사용한다.
 
-          통상적인 WAN은 여려 개의 교환 노드가 상호 연결되어 구성된다.
 
-          WAN은 Point to Point 방식을 이용하여 다른 WAN과 연결되며, switched WAN을 이용하면 2개 이상의 네트워크에 연결 될 수 있다.
+      2. IPv4/IPv6
 
+          TCP/IP protcol의 중심은 IP라 불리우는 IPv4였다.
 
-          ![network](https://slideplayer.com/slide/12581282/76/images/23/A+heterogeneous+network+made+of+WANs+and+LANs.jpg)
+          IPv4 Header 20 octet 또는 160bit의 길이를 가지고있다.
 
+          이 Header에는 ID, Flag, Fragment, Offset등의 field를 가지고 있다.
 
-          위 그림은 통상적인 네트워크를 나타낸 것이다.
+          IPv6는 IPv4 주소 고갈 및 최신 Network의 속도와 그래픽 및 비디오를 포함한 혼합 데이터 스트림을 처리하기 용이한 기능들을 추가한 것이다.
 
-          LAN은 Router를 통해 WAN과 연결되고 WAN들은 Switched 또는 Point to Point 방식을 이용하여 다른 WAN과 연결된다.
+          IPv6는 40octet 또는 320 bit의 길이를 가지고 잇으며 Source 및 Destination address에 각각 128bit를 할당하고 있어 32 bit의 주소 길이를 사용하는 IPv4에 비해 더 많은 주소 정보를 담을 수 있다.
 
-          각각의 디바이스들은 LAN을 거쳐 Router를 통해 WAN에 연결되어 원하는 네트워크와 통신 할 수 있다.
 
-          WAN의 데이터 전송 효율을 위해 사용되는 대표적인 4개의 기술은 다음과 같다.
+          ![IPv4](/src/contetn/img/../../content/img/ipv4.png)
 
-          1. Circuit switching(회선 교환)
+          ![Ipv6](/src/contetn/img/../../content/img/ipv6.png)
+          
+          
+      3. Socket
+      
+            Socket은 1980년대 Berkeley Socket Interface로서 UNIX 환경에서 개발되었다.
 
-              Circuit switching은 송수신 단말 장치 사이에서 데이터를 전송 할 때 마다 통신 경로를 설정하여 데이터를 교환하는 방식이다.
+            Socket은 Client와 Server간의 통신을 가능하게 해준다.
 
-              이 방법은 통신을 위해 회선 연결이 필요하며, 연결이 이루어지고 나면 통신이 이루어지는 동안 회선 전체를 독점하기 때문에 제3자가 통신에 개입할 수 없다.
+            Socket은 Internet 전체에서 고유한 IP주소와 port 값을 연결하여 형성된다.
 
-              Circuit switching은 전화와 같은 실시간 통신에 사용되기 때문에 속도와 성능이 일정하다.
+            Socket은 TCP/UDP를 사용하는 프로그램을 작성하기 위한 Interface로써 API를 정의하는데 사용된다.
 
-              이러한 방법은 통신 밀도가 높을 때 유리하고, 통신경로 설정이 매우 빠르다.
+            Stream Socket은 TCP를 사용해 모든 데이터 블럭이 양쪽 Socket 사이에서 제대로 전달되고 순서에 맞게 수신된다.
 
-              하지만 속도차나 전송 밀도차가 큰경우 비효올 적이고 접속시간동안 통신 회선을 트래픽에 무관하게 독점사용한다는 문제점이 있다.
-            
-              Circuit switching에는 FDM과 TDM 두가지 방법이 있다.
+            Datagram Socket은 UDP를 사용하기 때문에 제대로된 전송과 순서에 맞는 수신이 보장되지 않는다.
 
-              1. FDM(Frequency Division Multitasking, 주파수분할 다중화)
-
-                  FDM 방식은 전송되어야 하는 신호들의 대역폭의 합보다 링크의 대역폭이 클때 적용할 수 있는 기법이다.
-
-                  한 회선의 대역폭을 여러개의 작은 채널로 분할하여, 여러 단말기가 각 채널을 사용하는 방식이다.
-
-                  넓은 도로를 여러개의 차선으로 나누는것과 같이, 넓은 대역폭을 여러개의 좁은 대역폭으로 나누어 사용하는 방식이다.
-
-                  ![FDM](https://wildpup.cafe24.com/wp-content/uploads/2014/07/m2.png)
-
-                  FDM 방식은 특정 주파수 대역을 사용하는 기기가 정해져 있기 때문에 해당 주파수가 사용중이 아니더라도 지정된 기기가 아니라면 해당 주파수를 사용 할 수 없다는 단점이 있다.
-
-                
-              2. TDM(Time Division Multiplexing, 시분할 다중화)
-
-                  링크의 높은 대역폭을 여러 연결이 공유 할 수 있도록 하는 디지털 과정이다.
-
-                  TDM은 하나의 전송로 대역폭을 여러개의 Time slot으로 분할하여 채널에 할당함으로써, 몇개의 채널이 한 전송로의 시간을 분할 하여 사용할 수 있게 한다.
-
-                  TDM 방식 또한 Time slot이 모두 할당되어 사용중이라면 새로운 통신이 불가능하다.
-
-                  또한 Time slot이 사용중이지 않더라도 할당된 채널이 아니라면 해당 slot을 사용할 수 없다는 문제점이 있다.
-
-
-                  ![TDM](https://wildpup.cafe24.com/wp-content/uploads/2014/07/t1.png)
-
-
-
-
-
-          2. Packet switching(패킷 교환)
-
-              ![Packet_switching](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile9.uf.tistory.com%2Fimage%2F223A503757136200164F48)
-
-              Packet Switching은 데이터를 Packet이라는 단위로 쪼개서 전송하는 방식이다.
-
-              Packet은 다음 링크로 전송하기 전에 Buffer에 저장을 한 뒤 Header를 확인후 전달하는 Store and forward 방식을 사용한다.
-
-              Packet의 Header에는 Source와 Destination 정보가 있다.
-
-              Routing algorithm을 이용하여 경로를 설정하고, 중간의 Router들을 거쳐 Destination에 도달한다.
-
-              만약 Router의 Buffer가 가득차면 buffering이 불가능하게 된다. 이때 Packet이 전송되면 Overflow가 일어나 packet loss가 발생한다.
-
-              또한 회선 상황에 따라 전송된 순서대로 데이터가 도착하지 않을 수 도 있다. 이러한 문제를 Out of order delivery라고 한다.
-
-          3. Frame relay(프레임 릴레이)
-
-              Frame Relay는 전용선에 비해 저렴하고 적은 복잡성과 간단한 구현으로 망 구성 비용을 절감하게 해준다.
-
-              또한 전용선에 비해 넓은 대역폭과, 높은 신뢰성, 유연성을 제공한다.
-
-              프레임 릴레이는 가상회선을 사용하여 여려 개의 물리적 회선을 하나의 회선으로 대체하여 사용가능하다.
-
-              이때 사용하는 대체 회선을 PVC(Permanent Virtual Circuit)이라고 한다.
-
-              PVC는 논리적 경로로써 두 종단 사용자 간의 고유 경로를 정의한다.
-
-              최대 2mpbs의 속도로 동작하고, 오류 제어를 위한 오버헤드를 제거하여 높은 데이터 전송률을 확보한다.
-
-
-          4. Asynchronous Transfer Mode(ATM)
-
-              ATM은 프레임릴레이로 부터 진화한 것으로, Cell relay라고 불리기도 한다.
-
-              Circuit switching과 packet switching 개발의 정점에 있는 기술로써, cell이라고 불리는 고정된 길이의 Packet을 이용한다. 
-
-              고정된 길이의 Packet인 cell은 Frame relay 방식보다 오류제어를 위한 오버헤드를 더 제거할 수 있기 때문에 수십 ~ 수백 Mbps에서 Gbps까지의 속도로 동작 할 수 있다.
-
-              또한 ATM은 필요에 따라 동적으로 설정되는 Data rate를 가지는 다중 채널을 허용할 수 있어 Packet switching에 비해 효율적이다.
+            Raw Socket은 IP와 같은 하위 layer Protocol을 직접 호출 한다.
