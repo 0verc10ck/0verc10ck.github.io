@@ -19,51 +19,51 @@ tags:
 
   1.  Protocol Architecture의 필요성
     
-            두 기기간의 데이터 교환이 일어나는 과정은 상당히 복잡하고, 많은 요구사항이 요구된다.
+      두 기기간의 데이터 교환이 일어나는 과정은 상당히 복잡하고, 많은 요구사항이 요구된다.
 
-            다음은 데이터 교환을 위해 수행되어야하는 최소한의 작업들이다.
+      다음은 데이터 교환을 위해 수행되어야하는 최소한의 작업들이다.
 
-            - 발신 시스템은 데이터 전송로를 직접 가송 시키거나, 목적지 시스템의 식별자를 통신망에 알려야 한다.
+      - 발신 시스템은 데이터 전송로를 직접 가송 시키거나, 목적지 시스템의 식별자를 통신망에 알려야 한다.
         
-            - 발신 시스템은 목적지 시스템이 데이터를 받을 준비가 되어 있는가를 확인해야 한다.
+      - 발신 시스템은 목적지 시스템이 데이터를 받을 준비가 되어 있는가를 확인해야 한다.
 
-            - 발신 시스템의 파일 전송 응용프로그램은 목적지 시스템의 파일 관리 프로그램이 파일을 받아 저장할 준비가 되어잇는가 확인해야 한다.
+      - 발신 시스템의 파일 전송 응용프로그램은 목적지 시스템의 파일 관리 프로그램이 파일을 받아 저장할 준비가 되어잇는가 확인해야 한다.
 
-            - 두 시스템에서 사용되는 파일 형식이다를 경우, 형식 변환이 수행되어야 한다.
+      - 두 시스템에서 사용되는 파일 형식이다를 경우, 형식 변환이 수행되어야 한다.
 
-            데이터 교환이 일어나려면 이처럼 두 시스템간의 고차원적인 상호 협력이 필요하다.
+      데이터 교환이 일어나려면 이처럼 두 시스템간의 고차원적인 상호 협력이 필요하다.
 
-            이러한 작업을 하나의 모듈로 구현하는 것 보다는 여러개의 소규모 작업으로 나누어 구현하는것이 Error correction에 있어 유리하다.
+      이러한 작업을 하나의 모듈로 구현하는 것 보다는 여러개의 소규모 작업으로 나누어 구현하는것이 Error correction에 있어 유리하다.
 
-            Protocol Architecture에서는 모듈은 vertical stack으로 쌓인다. 각 계층은 다른 시스템과 통신하는데 필요한 기능들 중 자신과 관련된 부분을 수행한다.
+      Protocol Architecture에서는 모듈은 vertical stack으로 쌓인다. 각 계층은 다른 시스템과 통신하는데 필요한 기능들 중 자신과 관련된 부분을 수행한다.
 
-            각 계층은 자신의 하부 계층에서 제공하는 기본 서비스를 이용하며 하위 계층의 기능에 대한 자세한 사항은 알 필요가 없다.
+      각 계층은 자신의 하부 계층에서 제공하는 기본 서비스를 이용하며 하위 계층의 기능에 대한 자세한 사항은 알 필요가 없다.
 
-            각 계층은 바로 위 사우이 계층에게 서비스를 제공한다.
+      각 계층은 바로 위 사우이 계층에게 서비스를 제공한다.
 
-            각 계층이 변경되더라도 다른 계층에는 전혀 영향을 주지 않도록 정의하는것이 가장 이상적이다.
+      각 계층이 변경되더라도 다른 계층에는 전혀 영향을 주지 않도록 정의하는것이 가장 이상적이다.
 
-            통신이 이루어지면 두 시스템의 동일한 계층끼리 Peer(동료)가 존재해야 하낟. Peer들은 Protocol이라고 불리는 정해진 규칙에 따라 일정한 형식의 데이터 블록들을 교환 함으로써 통신한다. Protocol의 3가지 Key Feature는 다음과 같다.
+      통신이 이루어지면 두 시스템의 동일한 계층끼리 Peer(동료)가 존재해야 하낟. Peer들은 Protocol이라고 불리는 정해진 규칙에 따라 일정한 형식의 데이터 블록들을 교환 함으로써 통신한다. Protocol의 3가지 Key Feature는 다음과 같다.
 
-            - Syntax(문법) : 데이터 블록의 형태 
+      - Syntax(문법) : 데이터 블록의 형태 
         
-            - Semantics(의미론) : 조정과 오류 관리를 위한 제어정보
+      - Semantics(의미론) : 조정과 오류 관리를 위한 제어정보
         
-            - Timing(타이밍) : 속도 조절과 순서 조정
+      - Timing(타이밍) : 속도 조절과 순서 조정
 
   2. 간단한 Protocol 구조
 
-            일반적으로 데이터 통신은 Application, Computer, Network 3개의 에이전트를 포함한다.
+      일반적으로 데이터 통신은 Application, Computer, Network 3개의 에이전트를 포함한다.
 
-            데이터가 전송될 때 Source의 Applciation에서 Computer, Network를 거쳐 Destination의 Computer에 도착하고 최종적으로 Destination의 Application에 도달하게 된다.
+      데이터가 전송될 때 Source의 Applciation에서 Computer, Network를 거쳐 Destination의 Computer에 도착하고 최종적으로 Destination의 Application에 도달하게 된다.
 
-            이러한 개념을 적용하면 통신작업을 크게 독립적인 3개로 나눌 수 있다.
+      이러한 개념을 적용하면 통신작업을 크게 독립적인 3개로 나눌 수 있다.
+      
+         -   Network access layer : Network와 Computer 간의 데이터 교환을 다룬다.
 
-              -   Network access layer : Network와 Computer 간의 데이터 교환을 다룬다.
+         -   Transport layer : mechanism을 common layer에 모아두고, application이 공유하도록 한다.
 
-              -   Transport layer : mechanism을 common layer에 모아두고, application이 공유하도록 한다.
-
-              -   Applicatin layer : application을 지원할 logic들을 담고 있다.
+         -   Applicatin layer : application을 지원할 logic들을 담고 있다.
               
               
         ![ProtocolArchitectur](https://slideplayer.com/slide/7084980/24/images/11/Protocol+Architecture+and+Networks.jpg)
@@ -71,54 +71,51 @@ tags:
 
         ![simplified](https://image.slidesharecdn.com/02-protocolarchitecture-111113051534-phpapp02/95/02-protocol-architecture-12-728.jpg?cb=1321162215)
 
-            위의 두 그림은 Protocol의 간단한 구조를 보여준다.
+      위의 두 그림은 Protocol의 간단한 구조를 보여준다.
 
-            올바른 통신을 위해서는 시스템 내의 모든 개체가 반드시 유일한 자신만의 주소를 가지고 있어야 한다.
+      올바른 통신을 위해서는 시스템 내의 모든 개체가 반드시 유일한 자신만의 주소를 가지고 있어야 한다.
 
-            네트워크 상의 모든 컴퓨터는 자신만의 유일한 주소를 가지고 있고, 그 컴퓨터 위에서 동작하는 프로세스들 또한 유일한 주소를 가지고 있어야한다.
+      네트워크 상의 모든 컴퓨터는 자신만의 유일한 주소를 가지고 있고, 그 컴퓨터 위에서 동작하는 프로세스들 또한 유일한 주소를 가지고 있어야한다.
 
-            프로세스들을 구별하는 주소를 Port또는 SAP(Service access point)라고 하며, Source에서는 Destination의 주소와 Port를 알고 있어야 통신이 가능하다.
+      프로세스들을 구별하는 주소를 Port또는 SAP(Service access point)라고 하며, Source에서는 Destination의 주소와 Port를 알고 있어야 통신이 가능하다.
 
-            첫번째 그림은 각 컴퓨터의 Peer들이 Protocol을 사용하여 상대방과 통신한다는 것을 대략적으로 보여준다.
+      첫번째 그림은 각 컴퓨터의 Peer들이 Protocol을 사용하여 상대방과 통신한다는 것을 대략적으로 보여준다.
 
-            이러한 통신이 이루어지기 위해서는 다양한 동작들이 수반되어야 하고 이를 제어할 정보또한 데이터와 함께 전송되어야 한다.
+      이러한 통신이 이루어지기 위해서는 다양한 동작들이 수반되어야 하고 이를 제어할 정보또한 데이터와 함께 전송되어야 한다.
 
-            두번째 그림은 각 계층에서 추가되는 제어 정보들과 이 제어 정보들이 통신에서 활용되는 방법을 나타낸 것이다.
+      두번째 그림은 각 계층에서 추가되는 제어 정보들과 이 제어 정보들이 통신에서 활용되는 방법을 나타낸 것이다.
 
-            Application layer는 데이터 블록을 만들어 Transport layer로 넘긴다.
+      Application layer는 데이터 블록을 만들어 Transport layer로 넘긴다.
 
-            Transport layer에서는 Header라를 데이터 블록에 붙여 Segment라고 불리는 PDU(Protocol Data Unit)로 만드는데 이러한 작업을 encapsulation이라고 한다.
+      Transport layer에서는 Header라를 데이터 블록에 붙여 Segment라고 불리는 PDU(Protocol Data Unit)로 만드는데 이러한 작업을 encapsulation이라고 한다.
 
-            Header에 포함된 항목에는 다음과 같은것이 있다.
+      Header에 포함된 항목에는 다음과 같은것이 있다.
 
-                - Source port : 데이터를 보내는 Applicaition을 가리키는 주소
+         - Source port : 데이터를 보내는 Applicaition을 가리키는 주소
             
-                - Destination port : 데이터를 수신할 Application을 가리키는 주소
+         - Destination port : 데이터를 수신할 Application을 가리키는 주소
             
-                - Sequence Number : 여러 데이터를 송신할 경우 데이터의 송신 순서
+         - Sequence Number : 여러 데이터를 송신할 경우 데이터의 송신 순서
 
-                - Checksum : Frame check sequence라고도 하며, 특정 연산을 통해 데이터의 무결성을 확인
+         - Checksum : Frame check sequence라고도 하며, 특정 연산을 통해 데이터의 무결성을 확인, 값이 일치하지 않을 경우 전송과정에서 데이터 손상이 일어났다는것을 의미
+
+      Network layer에서는 Transport layer에서 전송받은 segment에 추가적인 정보를 붙여 Packet이라고 불리는 PDU를 만든다.
+
+      Packet에서 추가된 항복에는 다음과 같은것이 있다.
+
+         - Source Address : Packet의 발신지를 가리키는 주소
             
-                값이 일치하지 않을 경우 전송과정에서 데이터 손상이 일어났다는것을 의미
+         - Destination Address : Network가 어떤 컴퓨터로 Packet을 전송해야 할지 알리는 주소
 
-            Network layer에서는 Transport layer에서 전송받은 segment에 추가적인 정보를 붙여 Packet이라고 불리는 PDU를 만든다.
-
-            Packet에서 추가된 항복에는 다음과 같은것이 있다.
-
-                - Source Address : Packet의 발신지를 가리키는 주소
-            
-                - Destination Address : Network가 어떤 컴퓨터로 Packet을 전송해야 할지 알리는 주소
-
-                - Service Request : NAP(Network Access Protocol)이 우선순위와 같은 Sub-network service를 사용할 수 있도록 정보를 담는 곳
+         - Service Request : NAP(Network Access Protocol)이 우선순위와 같은 Sub-network service를 사용할 수 있도록 정보를 담는 곳
 
 # TCP/IP Protocol Architecture
 
-        TCP/IP Protocol Architecture는 ARPANET에서 수행된 protocol 연구와 개발의 결과이다.
-
-        TCP/IP protocol suit라고 불리우며, TCP/IP는 Internet의 표준인 대규모 Protocol을 구성한다.
-
-
   1. TCP/IP Layer
+
+      TCP/IP Protocol Architecture는 ARPANET에서 수행된 protocol 연구와 개발의 결과이다.
+
+      TCP/IP protocol suit라고 불리우며, TCP/IP는 Internet의 표준인 대규모 Protocol을 구성한다.
 
       통신은 크게 5 level의 layer로 구분된다.
       
