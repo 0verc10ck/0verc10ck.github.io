@@ -57,37 +57,39 @@ tags:
 
             데이터가 전송될 때 Source의 Applciation에서 Computer, Network를 거쳐 Destination의 Computer에 도착하고 최종적으로 Destination의 Application에 도달하게 된다.
 
-         이러한 개념을 적용하면 통신작업을 크게 독립적인 3개로 나눌 수 있다.
+            이러한 개념을 적용하면 통신작업을 크게 독립적인 3개로 나눌 수 있다.
 
-           -   Network access layer : Network와 Computer 간의 데이터 교환을 다룬다.
+              -   Network access layer : Network와 Computer 간의 데이터 교환을 다룬다.
 
-           -   Transport layer : mechanism을 common layer에 모아두고, application이 공유하도록 한다.
+              -   Transport layer : mechanism을 common layer에 모아두고, application이 공유하도록 한다.
 
-           -   Applicatin layer : application을 지원할 logic들을 담고 있다.
+              -   Applicatin layer : application을 지원할 logic들을 담고 있다.
+              
+              
+        ![ProtocolArchitectur](https://slideplayer.com/slide/7084980/24/images/11/Protocol+Architecture+and+Networks.jpg)
 
-         ![ProtocolArchitectur](https://slideplayer.com/slide/7084980/24/images/11/Protocol+Architecture+and+Networks.jpg)
 
-          ![simplified](https://image.slidesharecdn.com/02-protocolarchitecture-111113051534-phpapp02/95/02-protocol-architecture-12-728.jpg?cb=1321162215)
+        ![simplified](https://image.slidesharecdn.com/02-protocolarchitecture-111113051534-phpapp02/95/02-protocol-architecture-12-728.jpg?cb=1321162215)
 
-          위의 두 그림은 Protocol의 간단한 구조를 보여준다.
+            위의 두 그림은 Protocol의 간단한 구조를 보여준다.
 
-           올바른 통신을 위해서는 시스템 내의 모든 개체가 반드시 유일한 자신만의 주소를 가지고 있어야 한다.
+            올바른 통신을 위해서는 시스템 내의 모든 개체가 반드시 유일한 자신만의 주소를 가지고 있어야 한다.
 
             네트워크 상의 모든 컴퓨터는 자신만의 유일한 주소를 가지고 있고, 그 컴퓨터 위에서 동작하는 프로세스들 또한 유일한 주소를 가지고 있어야한다.
 
-           프로세스들을 구별하는 주소를 Port또는 SAP(Service access point)라고 하며, Source에서는 Destination의 주소와 Port를 알고 있어야 통신이 가능하다.
+            프로세스들을 구별하는 주소를 Port또는 SAP(Service access point)라고 하며, Source에서는 Destination의 주소와 Port를 알고 있어야 통신이 가능하다.
 
-          첫번째 그림은 각 컴퓨터의 Peer들이 Protocol을 사용하여 상대방과 통신한다는 것을 대략적으로 보여준다.
+            첫번째 그림은 각 컴퓨터의 Peer들이 Protocol을 사용하여 상대방과 통신한다는 것을 대략적으로 보여준다.
 
-          이러한 통신이 이루어지기 위해서는 다양한 동작들이 수반되어야 하고 이를 제어할 정보또한 데이터와 함께 전송되어야 한다.
+            이러한 통신이 이루어지기 위해서는 다양한 동작들이 수반되어야 하고 이를 제어할 정보또한 데이터와 함께 전송되어야 한다.
 
             두번째 그림은 각 계층에서 추가되는 제어 정보들과 이 제어 정보들이 통신에서 활용되는 방법을 나타낸 것이다.
 
-          Application layer는 데이터 블록을 만들어 Transport layer로 넘긴다.
+            Application layer는 데이터 블록을 만들어 Transport layer로 넘긴다.
 
             Transport layer에서는 Header라를 데이터 블록에 붙여 Segment라고 불리는 PDU(Protocol Data Unit)로 만드는데 이러한 작업을 encapsulation이라고 한다.
 
-           Header에 포함된 항목에는 다음과 같은것이 있다.
+            Header에 포함된 항목에는 다음과 같은것이 있다.
 
                 - Source port : 데이터를 보내는 Applicaition을 가리키는 주소
             
@@ -99,7 +101,7 @@ tags:
             
                 값이 일치하지 않을 경우 전송과정에서 데이터 손상이 일어났다는것을 의미
 
-         Network layer에서는 Transport layer에서 전송받은 segment에 추가적인 정보를 붙여 Packet이라고 불리는 PDU를 만든다.
+            Network layer에서는 Transport layer에서 전송받은 segment에 추가적인 정보를 붙여 Packet이라고 불리는 PDU를 만든다.
 
             Packet에서 추가된 항복에는 다음과 같은것이 있다.
 
@@ -120,7 +122,7 @@ tags:
 
       통신은 크게 5 level의 layer로 구분된다.
       
-      ![tcp_ip](../../content/img/TCP-IP.png)
+      ![tcp_ip](https://raw.githubusercontent.com/0verc10ck/0verc10ck.github.io/master/src/content/img/TCP-IP.png)
 
       1. Application Layer : TCP/IP 환경의 사용자 접속을 제공하며, 분산 정보 서비스를 제공한다. Application을 지원하기 위해 필요한 작업들을 다룬다.
 
@@ -135,7 +137,7 @@ tags:
 
   2. TCP/IP의 동작
   
-      ![tcp_ip](../../content/img/concepts.png)
+      ![tcp_ip](https://raw.githubusercontent.com/0verc10ck/0verc10ck.github.io/master/src/content/img/concepts.png)
 
       위 그림은 TCP/IP Protocol이 어떻게구성되는지를 보여준다.
 
@@ -155,7 +157,7 @@ tags:
 
       Host B에서는 Host A가 추가한 정보들을 하나씩 벗겨가며 데이터를 어디 전송해야 하는지 파악하고 데이터를 목적지인 App X에 전달한다.
       
-      ![PDU](../../content/img/PDU.png)
+      ![PDU](https://raw.githubusercontent.com/0verc10ck/0verc10ck.github.io/master/src/content/img/PDU.png)
 
       위 그림은 데이터가 각 Layer를 거치며 정보가 추가되는 과정을 나타낸 그림이다. 
 
@@ -186,7 +188,7 @@ tags:
 
           아래 그림은 TCP와 UDP Header의 구조이다.
 
-          ![TCP/UDP](/../../content/img/tcpdup.png)
+          ![TCP/UDP](https://raw.githubusercontent.com/0verc10ck/0verc10ck.github.io/master/src/content/img/tcpdup.png)
 
 
 
@@ -203,26 +205,27 @@ tags:
           IPv6는 40octet 또는 320 bit의 길이를 가지고 잇으며 Source 및 Destination address에 각각 128bit를 할당하고 있어 32 bit의 주소 길이를 사용하는 IPv4에 비해 더 많은 주소 정보를 담을 수 있다.
 
 
-          ![IPv4](../../content/img/ipv4.png)
+          ![IPv4](https://raw.githubusercontent.com/0verc10ck/0verc10ck.github.io/master/src/content/img/ipv4.png)
 
-          ![Ipv6](../../content/img/ipv6.png)
+          ![Ipv6](https://raw.githubusercontent.com/0verc10ck/0verc10ck.github.io/master/src/content/img/ipv6.png)
           
           
       3. Socket
       
-            Socket은 1980년대 Berkeley Socket Interface로서 UNIX 환경에서 개발되었다.
+      
+          Socket은 1980년대 Berkeley Socket Interface로서 UNIX 환경에서 개발되었다.
+          
+          Socket은 Client와 Server간의 통신을 가능하게 해준다.
 
-            Socket은 Client와 Server간의 통신을 가능하게 해준다.
+          Socket은 Internet 전체에서 고유한 IP주소와 port 값을 연결하여 형성된다.
 
-            Socket은 Internet 전체에서 고유한 IP주소와 port 값을 연결하여 형성된다.
+          Socket은 TCP/UDP를 사용하는 프로그램을 작성하기 위한 Interface로써 API를 정의하는데 사용된다.
 
-            Socket은 TCP/UDP를 사용하는 프로그램을 작성하기 위한 Interface로써 API를 정의하는데 사용된다.
+          Stream Socket은 TCP를 사용해 모든 데이터 블럭이 양쪽 Socket 사이에서 제대로 전달되고 순서에 맞게 수신된다.
 
-            Stream Socket은 TCP를 사용해 모든 데이터 블럭이 양쪽 Socket 사이에서 제대로 전달되고 순서에 맞게 수신된다.
+          Datagram Socket은 UDP를 사용하기 때문에 제대로된 전송과 순서에 맞는 수신이 보장되지 않는다.
 
-            Datagram Socket은 UDP를 사용하기 때문에 제대로된 전송과 순서에 맞는 수신이 보장되지 않는다.
-
-            Raw Socket은 IP와 같은 하위 layer Protocol을 직접 호출 한다.
+          Raw Socket은 IP와 같은 하위 layer Protocol을 직접 호출 한다.
 
 # 문제
 
