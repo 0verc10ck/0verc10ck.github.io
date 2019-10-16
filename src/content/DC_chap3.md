@@ -389,11 +389,11 @@ tags:
 
      Data rate은 다음의 3요소에 의해 좌우된다.
 
-         - Channel Bandwidth(B)
-
-         - Number of available signal level(L)
-
-         - Signal to noise ratio(SNR = Signal power / Noise power)
+       - Channel Bandwidth(B)
+       
+       - Number of available signal level(L)
+       
+       - Signal to noise ratio(SNR = Signal power / Noise power)
 
 
      Channel에는 이론적으로 Noiseless와 Noisy 두가지의 channel이 존재한다.
