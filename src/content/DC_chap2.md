@@ -13,7 +13,7 @@ tags:
 
 양질의 자료와 강의를 제공해주신 [김동균](https://monet.knu.ac.kr/) 교수님께 감사의 말씀 올립니다.
 
-강의의 내용과 제가 공부한 내용에 기반하기 때문에 부정확한 정보가 있을 수 있는점 주의하시기 바랍니
+강의의 내용과 제가 공부한 내용에 기반하기 때문에 부정확한 정보가 있을 수 있는점 주의하시기 바랍니다.
 
 # Protocol Architecture
 
@@ -88,7 +88,8 @@ tags:
       Application layer는 데이터 블록을 만들어 Transport layer로 넘긴다.
 
       Transport layer에서는 Header라를 데이터 블록에 붙여 Segment라고 불리는 PDU(Protocol Data Unit)로 만드는데 이러한 작업을 encapsulation이라고 한다.
-
+      
+      
       Header에 포함된 항목에는 다음과 같은것이 있다.
 
          - Source port : 데이터를 보내는 Applicaition을 가리키는 주소
