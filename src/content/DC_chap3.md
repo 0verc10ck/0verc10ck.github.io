@@ -101,9 +101,9 @@ tags:
 
      이러한 문제를 해결하기 위해 그래프의 x 축이 Frequency를 표현하고 y축이 Amplitude를 표현하는 Freqeucny domain을 사용한다.
 
-     ![simple](https://postfiles.pstatic.net/MjAxNzAzMjZfODcg/MDAxNDkwNTIxNzA5ODc5.btewjBxT0hQW2DLHnM-4t-w_8vtlBHMFwFuGYzndKf0g.XETK75DmwL1ucTMiOrp2uE1LgfJvu4tVsRDEiibmkggg.PNG.yye7926/%EC%BA%A1%EC%B2%98.PNG?type=w773)
+     ![simple](http://mblogthumb3.phinf.naver.net/MjAxNzAzMjZfODcg/MDAxNDkwNTIxNzA5ODc5.btewjBxT0hQW2DLHnM-4t-w_8vtlBHMFwFuGYzndKf0g.XETK75DmwL1ucTMiOrp2uE1LgfJvu4tVsRDEiibmkggg.PNG.yye7926/%EC%BA%A1%EC%B2%98.PNG?type=w800)
 
-     ![composite](https://postfiles.pstatic.net/MjAxNzAzMjZfMTcz/MDAxNDkwNTIxNzYwNDIw.SIZTrhC_jtnaHZluSwXLIDvooT1AONduBM_P-qmC2HMg.LBGhIe_5NonR7SfG5NyWClMZUdONcelI414_qSbB3o0g.PNG.yye7926/%EC%BA%A1%EC%B2%98.PNG?type=w773)
+     ![composite](http://mblogthumb1.phinf.naver.net/MjAxNzAzMjZfMTcz/MDAxNDkwNTIxNzYwNDIw.SIZTrhC_jtnaHZluSwXLIDvooT1AONduBM_P-qmC2HMg.LBGhIe_5NonR7SfG5NyWClMZUdONcelI414_qSbB3o0g.PNG.yye7926/%EC%BA%A1%EC%B2%98.PNG?type=w800)
 
      Frequency domain을 이용하면 여러 Frequency가 결합되어 있어도 이를 보기쉽게 나타낼 수 있고, Simple signal이라 하더라도 그래프의 구조가 한결 더 간단해 진다는 장점이 있다.
       
@@ -263,32 +263,6 @@ tags:
      아래는 Broadband 방식을 이용한 통신이 이루어지는 과정으로 각각 DAC 와 ADC를 이용하여 신호를 변환한다.
 
      ![broadband](https://postfiles.pstatic.net/MjAxNzAzMjZfMjcg/MDAxNDkwNTI1MjMzNjM0.R-yzLV--iShuAioezorrnrgUWf6_mxV5z4xN5N47Zbsg.22xr2qW5dVFeN4MApk1oVsbFPyvplvxDbM4ycEqjKKIg.PNG.yye7926/%EC%BA%A1%EC%B2%98.PNG?type=w773)
-
-
-
-     
-
-
-
-     
-
-
-
-
-     
-
-      1. Developmet of new services(새로운 서비스 개발)
-
-      2. Advances in technology(기술의 발전)
-
-      데이터 통신과 네트워크 기술은 위 세가지 원인을 통해 진화하고, 발전하게 된다.
-
-      간단한 예를 들자면, 무선통신기술이 1,2세대에서 3세대로 발전하며, 음성과 텍스트 위주의 데이터가 사진과 영상, 음악과 같은 다양한 형태의 디지털 데이터를 지원하게 되었다.
-
-      이러한 기술의 발전은 Youtube나 Facebook, Spotify, Netflix와 같은 서비스들이 개발 될 수 있는 원천이 되었고, 이러한 서비스들의 개발은 트래픽의 증가를 불러왔다.
-
-      트래픽이 증가함에 따라 증가한 트래픽을 더 효율적으로 빠르게 처리하기 위해 4세대, 5세대 통신으로 무선 통신기술은 발전하게 되었고, 이러한 발전은 또 다시 새로운 서비스의 개발과 트래픽의 증가를 불러오게 된다.
-
 
   2. 전송 장애
 
