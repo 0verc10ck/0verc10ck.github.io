@@ -167,8 +167,7 @@ Data와 Signal 모두 Analog와 Digital 2가지 종류가 존재하기 때문에
      아래는 대표적인 Encoding 기법들을 한눈에 보기 편하게 정리한것이다.
 
      ![tree](https://postfiles.pstatic.net/MjAxNzAzMjdfMTUx/MDAxNDkwNjAxOTExNjI0.BljoOwGhvDzsQJ7NF5GzrV55AwI1X1k-mZ4Zf08Tcs4g.-VwGznKfUH2F9eia0jRQbJVMc-tFPZGOcm45DEMRDR8g.JPEG.yye7926/image_7350905141490601900560.jpg?type=w773)
-
-          
+       
   5. NRZ(Non Return to Zero)
 
      NRZ방식은 Unipolar, Polar방식 모두 적용이 가능한 Encoding 기법이다.
