@@ -12,7 +12,7 @@ tags:
 
 Perceptron은 1957에 Frank rosenblatt가 고안한 알고리즘이다.
 
-Perceptron은 Nueral Network의 기원이 되는 알고리즘이다.
+Perceptron은 Neural Network의 기원이 되는 알고리즘이다.
 
 
 # 1 Perceptron이란?
@@ -29,7 +29,7 @@ $x_1$과 $x_2$는 입력신호, y는출력 신호를 뜻하고, $w_1$과 $w_2$�
 
 그림의 원을 Neuron 혹은 Node라고 부른다.
 
-입력신호는 각각의 Weight값과 곱해져 다음 Nueron으로 전해진다.
+입력신호는 각각의 Weight값과 곱해져 다음 Neuron으로 전해진다.
 
 이러한 과정을 거쳐 출력층으로 전해진 신호의 값이 임계값 $\theta$(theta)를 넘어서면 1 넘어서지 못하면 0을 출력한다.
 
