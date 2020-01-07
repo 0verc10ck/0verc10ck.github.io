@@ -124,7 +124,7 @@ Nerual Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 A
       plt.show()
    ```
 
-    ![stepfunc](\img\DLFB_chap3\stepfunc.PNG)
+    ![stepfunc](https://raw.githubusercontent.com/0verc10ck/0verc10ck.github.io/master/src/content/img/DLFB_chap3/stepfunc.PNG)
 
    np.arange(-5.0, 5.0, 0.1)은 -5.0부터 5.0까지 0.1 간격의 numpy array를 생성한다.
 
@@ -175,7 +175,7 @@ Nerual Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 A
       plt.show()
     ```
 
-    ![stepfunc](\img\DLFB_chap3\sigmoid.PNG)
+    ![sigmoid](https://raw.githubusercontent.com/0verc10ck/0verc10ck.github.io/master/src/content/img/DLFB_chap3/sigmoid.PNG)
 
 
     Sigmoid function은 step function과 달리 매끄러운 형상을 가지고 있다.
@@ -226,7 +226,7 @@ Nerual Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 A
     plt.ylim(-0.1, 5.1)#y축의 범위 지정
     plt.show()
     ```
-    ![ReLu](\img\DLFB_chap3\ReLu.PNG)
+    ![ReLu](https://raw.githubusercontent.com/0verc10ck/0verc10ck.github.io/master/src/content/img/DLFB_chap3/ReLu.PNG)
 
     위 코드에서 np.maximum(0,x)는 0과 x중 큰것의 값을 반환하는 function이다.
 
@@ -425,7 +425,7 @@ Neural Network는 Multi-dimension numpy array을 이용하여 구현된다.
 
     Classification에서 Output layer는 Classificate할 Class의 개수만큼 Neuron을 설정해야 한다.
 
-    가령 0 ~ 9 까지의 숫자를 분류하고자 한다면 Output layer는 10개의 Neuron을 가진다.ㄴ
+    가령 0 ~ 9 까지의 숫자를 분류하고자 한다면 Output layer는 10개의 Neuron을 가진다.
 
 
     
