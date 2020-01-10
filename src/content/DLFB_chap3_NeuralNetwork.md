@@ -8,12 +8,12 @@ tags:
   - 밑바닥 부터 시작하는 딥러닝
 ---
 
-본 chapter에서는 Multi layer Perceptron을 이용하여 구성한 Nerual Network에 대해 알아보고자 한다.
+본 chapter에서는 Multi layer Perceptron을 이용하여 구성한 Neural Network에 대해 알아보고자 한다.
 
 
 # 1 Neural Network
 
-Nerual Network는 multi layer Perceptron과 유사하다.
+Neural Network는 multi layer Perceptron과 유사하다.
 
 아래는 Neural Network를 나타낸 그림이다.
 
@@ -65,7 +65,7 @@ Activation function은 임계값을 경계로 출력의 결과가 바뀌는 func
 
 앞서살펴본 Perceptron의 경우 weigth * input data + bias의 값이 0보다 크면 1의 값을 작으면 0의 값을 반환하였다. 이러한 함수를 Step function이라고 한다.
 
-Nerual Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 Activation function을 이용한다. 
+Neural Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 Activation function을 이용한다. 
 
 
 1. Step function
