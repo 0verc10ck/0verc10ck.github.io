@@ -8,7 +8,7 @@ tags:
   - 밑바닥 부터 시작하는 딥러닝
 ---
 
-이번 Chapter에서는 Chap 3에서 배운 Neural Network를 Training 하고자 한다. Meachine Learning은 크게 Training과 Inference 두가지 단계로 구분된다. 
+이번 Chapter에서는 Chap 3에서 배운 Neural Network를 Training 하고자 한다. Machine Learning은 크게 Training과 Inference 두가지 단계로 구분된다. 
 
 Training 단계에서는 Training data를 이용하여 최적의 Weight와 Bias 값을 얻는다.
 
@@ -19,13 +19,13 @@ Training 과정에서 최적의 Weight와 Bias 값을 얻기 위해 Cost functio
 
 # 1 Training 과 Cost function
 
-Neural Network의 특징은 Data를 보고 학습할 수 있다는 것이다. Data를 학습한다는 말은 Data를 통해 Wegith와 bias를 조절할 수 있다는 뜻이다.
+Neural Network의 특징은 Data를 보고 학습할 수 있다는 것이다. Data를 학습한다는 말은 Data를 통해 Weight와 bias를 조절할 수 있다는 뜻이다.
 
-앞서 다룬 Perceptron이나, 3층 Neural Network는 weigth와 bias를 임의의 값으로 직접 결정하여 구현하였다.
+앞서 다룬 Perceptron이나, 3층 Neural Network는 weight와 bias를 임의의 값으로 직접 결정하여 구현하였다.
 
-하지만 실제 Neural network에는 수백 개에서 수천 개 이상의 Wegith와 bias가 존재하기 때문에 이를 사람이 일일이 지정해주기란 쉽지 않은 일이기다.
+하지만 실제 Neural network에는 수백 개에서 수천 개 이상의 Weight와 bias가 존재하기 때문에 이를 사람이 일일이 지정해주기란 쉽지 않은 일이기다.
 
-우리는 이 작업을 Neural Netwrok를 Training 하여 해결하고자 한다.
+우리는 이 작업을 Neural Network를 Training 하여 해결하고자 한다.
 
 1. Data
 
@@ -53,7 +53,7 @@ Neural Network의 특징은 Data를 보고 학습할 수 있다는 것이다. Da
 
     이를 위해 Data를 크게 Training data와 Test data 2가지로 분류해야 한다.
 
-    Training data만을 이용하여 Neural Network를 Training 하고, Neural Network의 범용성을 시험하기 위해 Training data와는 다른 Test data를 사용하여 Nework를 시험한다.
+    Training data만을 이용하여 Neural Network를 Training 하고, Neural Network의 범용성을 시험하기 위해 Training data와는 다른 Test data를 사용하여 Network를 시험한다.
 
     범용성이란 아직까지 경험해보지 못한 문제를 올바르게 풀어내는 능력이다. Machine Learning은 Computer가 사람처럼 이전의 경험을 토대로하여 처음보는 새로운 문제(Data)를 스스로 해결해 나가기는 것을 목표로 하기 때문에 범용성은 아주 중요한 요소중 하나이다.
 
@@ -176,14 +176,7 @@ Neural Network는 현재의 상태를 하나의 지표로 사용하고, 그 지�
 
     이렇듯이 CEE는 정답일 때 0에 가까운 값을 가지게 된다.
 
-    
-   
-
-  
-
-
-
-3. Cost function의 사용이유와
+3. Cost function의 사용이유
 
     Training에서 우리의 궁극적인 목표는 높은 Accuracy를 끌어내는 Weight와 bias 값을 찾는데 있다.
 
@@ -213,7 +206,7 @@ Neural Network는 현재의 상태를 하나의 지표로 사용하고, 그 지�
 
     이러한 이유로 Training 단계에서 Weight와 bias의 수정 지표로 Cost function을 이용하는 것이다.
 
-    Acitvation function으로 Step function 대신 sigmoid나 ReLu를 사용하는 이유도 동일한 이유이다.
+    Activation function으로 Step function 대신 sigmoid나 ReLu를 사용하는 이유도 동일한 이유이다.
 
     Step function이 Weight와 bias가 주는 변화를 말살하여 Cost function의 값에 아무런 변화가 일어나지 않아 Training이 잘 이루어지지 않을 수 있기 때문이다.
  
@@ -246,11 +239,11 @@ Neural Network는 현재의 상태를 하나의 지표로 사용하고, 그 지�
 
 # 3 Differentiation와 Gradient
 
-Neural Network의 Training에서 최적의 Wegith와 bias를 찾기 위해 가장 자주 사용되는 기법은 Gradient descending이다.
+Neural Network의 Training에서 최적의 Weight와 bias를 찾기 위해 가장 자주 사용되는 기법은 Gradient descending이다.
 
-Gradient descending은 Cost function의 Gradient값을 기준으로 Weigth와 bias를 수정할 방향을 정한다.
+Gradient descending은 Cost function의 Gradient값을 기준으로 Weight와 bias를 수정할 방향을 정한다.
 
-본 Section에서는 Gradient와 이이를 구하기 위한 Differentitation를 간단하게 알아보도록 하겠다.
+본 Section에서는 Gradient와 이이를 구하기 위한 Differentiation를 간단하게 알아보도록 하겠다.
 
 1. Differentiation
 
@@ -302,164 +295,214 @@ Gradient descending은 Cost function의 Gradient값을 기준으로 Weigth와 bi
 
     h의 값은 작으면 작을 수록 오차가 적어져 좋지만 너무 작아지면 rounding error가 발생할 수 있기 때문에 통상적으로 사용되는 $e^-4$ 를 사용하였다.
 
+2. Partial Differentiation
+
+    만약 Differentiation 하려는 function이 $f(x_{0}, x_{1}) = x_0^2 + x_1^2$와 같은 multivariate function 이라면 어떻게 해야할까?
+
+    아래는 위 function의 graph이다. 2개의 Variable을 가지기 때문에 3 Dimension으로 표현된다.
+
+    ![func1](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile9.uf.tistory.com%2Fimage%2F21E391335977F5BD20EBDB)
+
+    Variable이 $x_{0}$ 와 $x_{1}$ 로 2개이기 때문에 어떤 Variable에 대해 Differentiate 할것인지를 구별해야 한다.
+
+    이렇게 2개 이상의 Variable을 가지는 function에 대한 Differentiation을 Partial differentiation이라고 한다.
+
+    기존의 Differentiation은 $\frac{\text{d}f(x)}{\text{d}x}$ 으로 표현하였지만 Partial Differentiation은 \frac{\partial f}{\partial x_{0}} , \frac{\partial f}{\partial x_{1}} 으로 표현된다.
+
+    Partial Differentiation에서는 현재 Differentiation 할 Variable 이외의 Variable은 Constant로 취급한다.
 
 
+3. Gradient
 
-    우리는 위 사진과 같이 Input, Output Layer와 2개의 Hidden Layer를 가진 3층(입력층을 0층으로 가정하였음) Neural Network를 구현할 것이다.
+    지금까지 cost function의 Gradient를 구하기 위한 Differentiation에 대해 알아보았다. 그렇다면 Gradient란 무엇이고 Cost function의 Gradient를 구해야하는 이유는 무엇일까?
 
-    편의를 위해 Input layer에서 첫번째 Hidden layer로 가는 weight를 W1, bias를 B1이라고 하자.
+    Gradient란 function에서 모든 Variable의 Partial Differentiation을 Vector로 정리한것이다.
 
-    첫번째 Hidden layer에서 2번째 Hidden layer로 가는 weight는 W2, bias는 B2가 된다.
-
-    마지막으로 Output layer 향하는 weight는 W3, bias는 B3가 된다.
-
-    Activation function으로는 Sigmoid function을 이용할 것이고, Output Layer에서는 Identity function을 이용하여 값을 출력하도록 하겠다.
-
-    아래는 위 사진의 Neural Network를 Python 코드로 구현한 것이다.
-
-    각 weigth, x, bias의 값은 임의로 적당한 값을 설정하도록 하겠다.
+    아래는 Python으로 Gradient를 구현한 것이다.
 
     ```python
       import numpy as np
-      def Init_network():
-        network = {}
-        network['W1'] = np.array([[0.1, 0.3, 0.5], [0.2, 0.4, 0.6]])
-        network['B1'] = np.array([[0.1,0.2,0.3]])
-        network['W2'] = np.array([[0.1,0.4],[0.2,0.5],[0.3,0.6]])
-        network['B2'] = np.array([0.1,0.2])
-        network['W3'] = np.array([[0.1,0.3],[0.2,0.4]])
-        network['B3'] = np.array([0.1,0.2])
-        
-        return network
+      def numerical_gradient(f,x):
+        h = 1e-4
+        grad = np.zeros_like(x)
 
-      def forward(network, x):
-        W1, W2, W3 = network['W1'],network['W2'],network['W3']
-        B1, B2, B3 = network['B1'],network['B2'],network['B3']
-    
-        a1 = np.dot(x, W1) + B1
-        z1 = sigmoid(a1)
-    
-        a2 = np.dot(z1, W2) + B2
-        z2 = sigmoid(a2)
-    
-        a3= np.dot(z2, W3) + B3
-        y= identity_function(a3)
-    
-        return y
+        for idx in range(x. size):
+          tmp_val = x[idx]
 
-      def sigmoid(x):
-        return 1/(1+np.exp(-x))
+          x[idx] = tmp_val + h
+          fxh1 = f(x)
 
-      def identity_function(x):
+          x[idx] = tmp_val - h
+          fxh2 = f(x)
+
+          grad[idx] = (fxh1 - fxh2) / (2 * h)
+
+          x[idx] = tmp_val
+          
+        return grad
+    ```
+
+    numerical_gradient(f,x)는 앞서 구현한 numerical_diff(f,x)와 상당히 유사하게 동작한다.
+
+    다만 diff의 경우 하나의 x에 대해서만 동작하고 gradient의 경우 해당 function의 모든 variable인 x array에 대해서 동작한다는 점이 다르다.
+
+    np.zero_like(x)는 x와 shape가 같고, 0으로 채워진 Array를 생성하는 동작을 한다.
+
+    그렇다면 Gradient를 구함으로써 얻을 수 있는 정보는 무엇일까? 이를 알아보기 위해 $f(x_0, x_1) = x_0^2 + x_1^2$ 의 Gradient를 그래프로 나타내 보았다.
+
+    ![grid](https://poddeeplearning.readthedocs.io/ko/latest/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EB%94%A5%EB%9F%AC%EB%8B%9D/4_neuralnet_pulpan92_image/image5.png)
+
+    Gradient는 위의 그림처럼 방향을 가진 Vector로 그려진다. 이 그림을 보면 Gradient는 function의 가장 낮은 장소(Minimum)을 가리키고 있다.
+
+    또한 Minimum에서 멀어질 수록 화살표의 길이가 길어짐을 알 수 있다.
+
+    Gradient는 각 지점에서 낮아지는 방향을 가르키고 있다.
+
+    정확하게 말하자면 Gradient가 가르키는 쪽은 각 장소에서 function의 output을 가장 크게 줄일 수 있는 방향이다.
+
+    Gradient 정보를 이용하여 function의 output을 줄일수 있는 곳에 대한 정보를 얻을 수 있는 것이다.
+
+    우리는 이러한 Gradient 정보를 이용하여 cost function의 output을 줄이는 방법에 대해 알아볼 것이다.
+    
+4. Gradient descent method
+
+    우리는 Neural network의 cost function이 minimum value를 가지게 하는 Weight와 Bias 값을 찾아야 한다.
+
+    하지만 cost function은 일반적으로 매우 복잡하고, Parameter space가 복잡하여 minimum value를 찾기가 쉽지 않다.
+
+    이를 해결하기 위해 Gradient를 이용하여 function의 minimum에 최대한 가까운 값을 찾기 위해 사용되는 방법이 Gradient descent method이다.
+
+    하지만 Gradient descent method에서는 Gradient가 0인 지점이 항상 function의 minimum value라는 보장이 없다는 것이다.
+
+    ![grad](https://www.safaribooksonline.com/library/view/hands-on-machine-learning/9781491962282/assets/mlst_0405.png)
+
+    위 사진 처럼 Gradient가 0인 지점은 minimum value 일 수도 있고, local minimum point 혹은 saddle point 일수도 있기 때문이다.
+
+    복잡한 모양의 function의 경우 plateau라고 하는 평평한, Training이 거의 진행되지 않는 구간도 존재할 수 있다.
+
+    그럼에도 불구하고, Gradient descent method는 Minimum value를 찾을 수 있는 가장 효율적인 방법중 하나이기 때문에 널리 사용되고 있다.
+
+    Gradient descent method는 다음의 과정으로 진행된다.
+
+    현재의 Gradient를 구하고 이를 기점삼아 일정 거리만큼 이동한다.
+
+    이후 이동한 위치에서의 Gradient를 구하고 이동하는 과정을 반복한다.
+
+    이를 수식으로 나타내면 다음과 같다.
+
+    $x_k = x_k - \eta\frac{\partial f}{\partial x_{k}}$
+
+    위 수식중 기호 $\eta$ 는 Learning rate를 나타내는 기호이다.
+
+    Learning rate는 한 번의 학습으로 얼마만큼 학습할지, 즉 Parameter를 얼마나 갱신 할지를 결정하는 Parameter이다.
+
+    Learning rate는 0.1 또는 0.001과 같이 사용자가 미리 특정한 값을 지정해야 한다.
+
+    Learning rate는 Weight나 Bias와 같이 Neural network가 Training을 통해 스스로 값을 결정하는 Parameter와 달리 사람이 직접 설정해야 하는 Parameter이다.
+
+    이러한 Parameter를 Hyper Parameter라고 한다. Hyper Parameter는 여러번의 실험을 거쳐 최적의 값을 찾는 과정을 필요로 한다.
+
+    일반적으로 Learning rate의 값이 너무 크거나 작으면 Minimum value를 찾아갈 수 없다.
+
+    ![lr](https://jaehyeongan.github.io/image/learning_rate_sl.png)
+
+    위의 예처럼 Learning rate가 너무 작으면 Weight와 Bias를 갱신하는데 너무 많은 시간이 요구되고, 여러번 학습을 하더라도 거의 변화가 이루어지지 않는다.
+
+    반대로 Learning rate가 너무 크면 Cost가 감소하지 않고, 증가하는 Overshooting이 발생할 수 있기 때문에 적절한 값을 사용해야 한다.
+
+    아래는 Gradient descent method와 적용 예를 Python으로 구현한것이다.
+
+
+    ```python
+      def gradient_descent(f, init_x, lr =0.01, step_num=100):
+        x = init_x
+
+        for i in range(step_num):
+          grad = numerical_gradient(f,x)
+          x -= lr * grad
+
         return x
-        
-      network = Init_network()
-      x = np.array([1.0, 0.5])
-      y = forward(network, x)
-      print(y)
-      #[[0.31682708 0.69627909]]
-      ```
-
-    위 코드는 Neural Network를 구현하는 Init_network, Input signal을 Output signal로 변환하는 forward, Activation function sigmoid와 Identity_function으로 구성 되어 있다.
-
-    Identity_function은 Input을 그대로 반환하기 때문에 굳이 구현할 필요는 없지만 Neural Network의 흐름을 통일하기 위해 구현하였다.
-
-    Init_network에서는 각 Neural Network의 각 Layer별 Weight와 Bias 값을 지정한다.
-
-    forward에서는 Init_network에서 지정한 W값과 B 값을 이용하여 a에 x * W + B의 값을 저장하고, 이를 sigmoid 또는 Identitiy_function을 거쳐 값을 z 또는 y 에 저장하고, 최종 결과인 y를 반환한다.
-
-    function name으로 forward를 사용한 이유는 signal이 Input에서 Output 방향인 순방향만을 향해서만 진행되기 때문이다. 
-
-    추후에 Output에서 Input 방향인 역방향으로의 진행에 대해서도 다루도록 하겠다.
-
-
-2. ㅌ
-2. Output layer 설계하기
-
-    Neural Network는 Classification과 Regression에 모두 이용할 수 있다. 
-    
-    다만 둘중 어떤 문제에 사용하느냐에 따라 Output layer에서 사용하는 Activation function이 달라진다.
-
-    Regression은 Input data에서 연속된 수치를 예측하는 문제이고, Classification은 Input data가 어떤 class에 속하는지를 찾는 문제이다.
-
-    일반적으로 Regression에는 Identitiy function을 Classification에는 Softmax를 사용한다.
-
-    Identitiy function은 Input을 그대로 Output으로 사용한다. 한편 Softmax function은 다음의 수식을 가진다.
-
-    $y_{k} =\frac{ e^{a^{k}}}{\sum_{i=1}^n e^{a^{i}}}$
-
-    위 수식에서 n은 Output layer의 Neuron의 수이고, $y_{k}$는 n개의 Neuron중 k번째 Neuron의 Output임을 나타낸다.
-
-    아래는 softmax function을 python으로 구현한 것이다.
-
-    ```python
-      def softmax(a):
-        exp_a = np.exp(a)
-        sum_exp_a = np.sum(exp_a)
-        
-        return exp_a / sum_exp_a
     ```
 
-    위 코드는 위의 softmax의 식을 완벽하게 구현하였지만 한가지 큰 결함이 있다.
+    Argument f는 cost function, init_x는 초기값, lr은 Learning rate, step_num은 반복횟수이다.
 
-    그것은 바로 컴퓨터 상에서 동작할 때 Overflow 문제가 발생한다는 것이다.
-
-    일반적으로 Exponential 하게 증가하는 수치는 아주 큰 값이 된다. $e^{100}$ 만 되어도 2.6881171e+43의 값을 가지기 때문에 float의 범위를 한참 뛰어 넘는다.
-
-    이를 해결하기 위해 exp_a를 계산하는 과정에서 Inputsignal의 Max 값을 c라고 하고 이 값을 a에서 빼주면 Overflow를 방지할 수 있다.
-
-    아래는 이러한 해결책을 적용한 코드이다.
-
-     ```python
-      def softmax(a):
-        c = np.max(a)
-        exp_a = np.exp(a - c)
-        sum_exp_a = np.sum(exp_a)
-        
-        return exp_a / sum_exp_a
-    ```
-
-    그렇다면 Classification에서 Output layer의 Activation function으로 softmax를 사용하는 이유는 무엇일까?
-
-    이를 알아보고자 하면 softmax의 특징에 대해 알아야 한다.
-
-    Softmax는 0 ~ 1 사이의 Output을 가진다. 또한 Softmax의 모든 Output의 summation은 1이 된다.
-
-    이말인 즉슨 Softmax의 각 Output은 확률로 해석될 수 있다는 말이다.
-
-    이해를 돕기 위해 아래의 예시코드를 이용하여 설명을 진행하도록 하겠다.
+    아래는 이를 적용하여 $f(x_0, x_1) = x_0^2 + x_1 ^2$ 의 Minimum value를 찾는 예이다.
 
     ```python
       import numpy as np
-      def softmax(a):
-        c = np.max(a)
-        exp_a = np.exp(a - c)
-        sum_exp_a = np.sum(exp_a)
+      def gradient_descent(f, init_x, lr =0.01, step_num=100):
+        x = init_x
+      
+        for i in range(step_num):
+          grad = numerical_gradient(f,x)
+          x -= lr * grad
         
-        return exp_a / sum_exp_a
+        return x
 
-      a = np.array([0.3, 2.9, 4.0])
-      y = softmax(a)
-      print(y)//[0.01821127 0.24519181 0.73659691]
-      np.sum(y)//1.0
+      def function_2(x):
+        return x[0]**2 + x[1]**2
+
+      def numerical_gradient(f,x):
+        h = 1e-4
+        grad = np.zeros_like(x)
+    
+        for idx in range(x.size):
+          tmp_val = x[idx]
+        
+          x[idx] = tmp_val + h
+          fxh1 = f(x)
+
+          x[idx] = tmp_val - h
+          fxh2 = f(x)
+        
+          grad[idx] = (fxh1 - fxh2) / (2 * h)
+
+          x[idx] = tmp_val
+        
+        return grad
+
+      init_x = np.array([-3.0, 4.0])
+      gradient_descent(function_2, init_x=init_x, lr=0.1, step_num=100)
+      #array([-6.11110793e-10,  8.14814391e-10])
     ```
 
-    위의 예에서 Input data가 y[0]일 확률은 0.0018(1.8%), y[1]일 확률은 0.245(24.5%), y[2]일 확률은 0.737(73.7%)로 볼 수 있다.
+    결과는 (-6.1e-10, 8.1e-10)으로 실제 Minimum value인 (0,0)에 상당히 가까운 값을 보인다.
 
-    이러한 결과로 부터 "2번째 Class일 확률이 74%로 가장 높으니 해당 Data는 2번째 Class 일것이다"와 같은 결론을 내릴 수 있게 되는 것이다.
+    ![method](https://2.bp.blogspot.com/-ocZJ6T_Nf7A/WZ53x63h9jI/AAAAAAAAAJ4/3gGtOmhSEUYmmNEzMKaaBZOeYFBOOBUsQCLcBGAs/s1600/sgd_1.png)
 
-    모든 y값의 summation은 1.0이므로 각 y 값이 나타내는 것을 확률로 이해할 수 있기 때문에 Classification에서 Softmax를 사용한다.
+    위의 사진과 같은 절차로 $x_0, x_1$ 의 값이 갱신되며 점차 (0,0)에 가까워지는 모습을 보인다.
 
-    Softmax 함수는 Input의 대소관계가 Output에서 달라지지 않는다는 특징을 가지고 있다. np.exp() 연산에 많은 Computing source가 요구되기 때문에 Softmax는 주로 Training 단계에서만 사용되고 Inference 단계에서는 생략하는것이 일반적이다.
+5. Neural Network에서의 Gradient
 
-    그렇다면 Output layer의 설계는 어떻게 해야할까?
+    지금까지 Neural Network의 최적의 Parameter 값을 찾기위한 방법인 Gradient descent method에 대해 알아보았다.
 
-    Output layer 또한 Activation function처럼 Classification, Regression에 따라 달라진다.
+    이제 이를 실제 Neural Network에 적용하는 방법을 알아보고 직접 실습해 보도록 하겠다.
 
-    Classification에서 Output layer는 Classificate할 Class의 개수만큼 Neuron을 설정해야 한다.
+    Neural Network에서의 Gradient는 Weight Parameter에 대한 cost function의 Gradient를 뜻한다.
 
-    가령 0 ~ 9 까지의 숫자를 분류하고자 한다면 Output layer는 10개의 Neuron을 가진다.
+    예를들어 shape가 2x3, Weight가 W, Cost function이 L인 Neural Network가 있다고 가정하자.
+
+    이경우 Gradient는 $\frac{\partial L}{\partial W}$ 으로 나타낼 수 있고 다음과 같은 수식으로 표현된다.
+
+    $W =\begin{pmatrix} 
+    w_{11} & w_{12} & w_{13}\\
+    w_{21} & w_{22} & w_{23}
+    \end{pmatrix}$
+
+    $
+    \frac{\partial L}{\partial W} =\begin{pmatrix} 
+   \frac{\partial L}{\partial w_{11}} & \frac{\partial L}{\partial w_{12}} & \frac{\partial L}{\partial w_{13}}\\
+   \frac{\partial L}{\partial w_{21}} & \frac{\partial L}{\partial w_{22}} & \frac{\partial L}{\partial w_{23}}
+    \end{pmatrix}
+    $
+
+    $\frac{\partial L}{\partial W}$ 의 각 원소는 각각의 원소에 대한 Partial Differentiation이다. 예를 들어 $frac{\partial L}{\partial w_{11}}$ 은 $w_{11}$을 변경하였을 때 L이 얼마나 변하는지를 나타낸다.
 
 
-    
+
+
+
+
+
+  
 

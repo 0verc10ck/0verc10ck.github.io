@@ -25,7 +25,7 @@ Hidden layer의 Neuron은 Input layer나 Output layer의 것과 달리 겉으로
 
 Neural Network의 Hidden layer는 single layer 일 수도 있고 multi layer일 수도 있다.
 
-Neural Netwrok의 Input layer를 0 또는 1층 이라고 하고 오른쪽으로 갈 수록 층이 높아지게 된다. 대부분의 컴퓨터 언어는 0을 Array의 첫 Index로 판단하기 때문에 Neural Network 또한 0 층부터 세도록 하겠다.
+Neural Network의 Input layer를 0 또는 1층 이라고 하고 오른쪽으로 갈 수록 층이 높아지게 된다. 대부분의 컴퓨터 언어는 0을 Array의 첫 Index로 판단하기 때문에 Neural Network 또한 0 층부터 세도록 하겠다.
 
 Neural Network의 구조는 MLP와 비슷하다 이를 좀 더 자세히 알아보기 위해 Perceptron을 잠깐 되돌아 보도록 하자
 
@@ -63,7 +63,7 @@ Neural Network는 다양한 종류의 activation function을 이용하여 최적
 
 Activation function은 임계값을 경계로 출력의 결과가 바뀌는 function이다. 
 
-앞서살펴본 Perceptron의 경우 weigth * input data + bias의 값이 0보다 크면 1의 값을 작으면 0의 값을 반환하였다. 이러한 함수를 Step function이라고 한다.
+앞서살펴본 Perceptron의 경우 weight * input data + bias의 값이 0보다 크면 1의 값을 작으면 0의 값을 반환하였다. 이러한 함수를 Step function이라고 한다.
 
 Neural Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 Activation function을 이용한다. 
 
@@ -103,7 +103,7 @@ Neural Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 A
     ```python
       import numpy as np
       x = np.array([-1.0, 1.0, 2.0])
-      step_fucntion(x)#array[0, 1, 1]
+      step_function(x)#array[0, 1, 1]
     ```
 
    step function을 좀더 직관적으로 이해하기 위해 그래프를 그려보자. 
@@ -188,7 +188,7 @@ Neural Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 A
 
     Step function과 Sigmoid function은 공통적으로 input이 커지면 output이 1에 가까워지거나 1이 되고, input이 작아지면 output이 0에 가까워거나 0이 되는 구조를 가지고 있다.
 
-    다만 Step function이 Discret한 output을 가진다면 Sigmoid function은 Continuous한 output을 가진다는 차이점이 있다.
+    다만 Step function이 Discrete한 output을 가진다면 Sigmoid function은 Continuous한 output을 가진다는 차이점이 있다.
 
 
 3. ReLu(Rectified Linear Unit)
@@ -232,7 +232,7 @@ Neural Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 A
 
     ReLu는 input이 0보다 크면 input을 그대로 output으로 사용하기 때문에 선형적인 형태를 띈다.
 
-    Sigmoid의 경우 input이 일정값을 넘어설 경우 1 또는 0에 수렴하기 때문에 2개의 intput이 큰 차이를 가지더라도 output이 큰차이를 가지지 않을 수 있다.
+    Sigmoid의 경우 input이 일정값을 넘어설 경우 1 또는 0에 수렴하기 때문에 2개의 input이 큰 차이를 가지더라도 output이 큰차이를 가지지 않을 수 있다.
 
     하지만 ReLu의 경우 0 이상의 값들은 Input의 차이가 Output의 차이를 불러오게 된다. 
 
@@ -253,7 +253,7 @@ Neural Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 A
 
     만약 2개의 Hidden Layer를 가진 Neural Network가 있다고 가정해보자
 
-    이 Nerural Network의 Activation function이 $h(x) = ax + b$라고 하고, 이 Neural Network의 Input이 x라고 하면 Output은 다음과 같다.
+    이 Neural Network의 Activation function이 $h(x) = ax + b$라고 하고, 이 Neural Network의 Input이 x라고 하면 Output은 다음과 같다.
 
     $y = h(h(h(x)))$ 이고 $h(x) = ax +b$ 를 대입하면 $y = a^3x + a^2b$ 가 된다.
 
@@ -267,7 +267,7 @@ Neural Network는 Step function 이외에도 sigmoid, ReLu와 같은 다양한 A
 
 Neural Network는 Multi-dimension numpy array을 이용하여 구현된다.
 
-본 Section에서는 Python을 이용하여 3층 Nural Network를 구현해볼 것이다.
+본 Section에서는 Python을 이용하여 3층 Neural Network를 구현해볼 것이다.
 
 1. Neural Network 구현하기
 
@@ -285,7 +285,7 @@ Neural Network는 Multi-dimension numpy array을 이용하여 구현된다.
 
     아래는 위 사진의 Neural Network를 Python 코드로 구현한 것이다.
 
-    각 weigth, x, bias의 값은 임의로 적당한 값을 설정하도록 하겠다.
+    각 weight, x, bias의 값은 임의로 적당한 값을 설정하도록 하겠다.
 
     ```python
       import numpy as np
@@ -334,7 +334,7 @@ Neural Network는 Multi-dimension numpy array을 이용하여 구현된다.
 
     Init_network에서는 각 Neural Network의 각 Layer별 Weight와 Bias 값을 지정한다.
 
-    forward에서는 Init_network에서 지정한 W값과 B 값을 이용하여 a에 x * W + B의 값을 저장하고, 이를 sigmoid 또는 Identitiy_function을 거쳐 값을 z 또는 y 에 저장하고, 최종 결과인 y를 반환한다.
+    forward에서는 Init_network에서 지정한 W값과 B 값을 이용하여 a에 x * W + B의 값을 저장하고, 이를 sigmoid 또는 Identity_function을 거쳐 값을 z 또는 y 에 저장하고, 최종 결과인 y를 반환한다.
 
     function name으로 forward를 사용한 이유는 signal이 Input에서 Output 방향인 순방향만을 향해서만 진행되기 때문이다. 
 
@@ -349,9 +349,9 @@ Neural Network는 Multi-dimension numpy array을 이용하여 구현된다.
 
     Regression은 Input data에서 연속된 수치를 예측하는 문제이고, Classification은 Input data가 어떤 class에 속하는지를 찾는 문제이다.
 
-    일반적으로 Regression에는 Identitiy function을 Classification에는 Softmax를 사용한다.
+    일반적으로 Regression에는 Identity function을 Classification에는 Softmax를 사용한다.
 
-    Identitiy function은 Input을 그대로 Output으로 사용한다. 한편 Softmax function은 다음의 수식을 가진다.
+    Identity function은 Input을 그대로 Output으로 사용한다. 한편 Softmax function은 다음의 수식을 가진다.
 
     $y_{k} =\frac{ e^{a^{k}}}{\sum_{i=1}^n e^{a^{i}}}$
 
@@ -373,7 +373,7 @@ Neural Network는 Multi-dimension numpy array을 이용하여 구현된다.
 
     일반적으로 Exponential 하게 증가하는 수치는 아주 큰 값이 된다. $e^{100}$ 만 되어도 2.6881171e+43의 값을 가지기 때문에 float의 범위를 한참 뛰어 넘는다.
 
-    이를 해결하기 위해 exp_a를 계산하는 과정에서 Inputsignal의 Max 값을 c라고 하고 이 값을 a에서 빼주면 Overflow를 방지할 수 있다.
+    이를 해결하기 위해 exp_a를 계산하는 과정에서 Input signal의 Max 값을 c라고 하고 이 값을 a에서 빼주면 Overflow를 방지할 수 있다.
 
     아래는 이러한 해결책을 적용한 코드이다.
 
@@ -423,7 +423,7 @@ Neural Network는 Multi-dimension numpy array을 이용하여 구현된다.
 
     Output layer 또한 Activation function처럼 Classification, Regression에 따라 달라진다.
 
-    Classification에서 Output layer는 Classificate할 Class의 개수만큼 Neuron을 설정해야 한다.
+    Classification에서 Output layer는 Classification할 Class의 개수만큼 Neuron을 설정해야 한다.
 
     가령 0 ~ 9 까지의 숫자를 분류하고자 한다면 Output layer는 10개의 Neuron을 가진다.
 
