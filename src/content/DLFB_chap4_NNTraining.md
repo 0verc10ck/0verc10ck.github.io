@@ -307,7 +307,7 @@ Gradient descending은 Cost function의 Gradient값을 기준으로 Weight와 bi
 
     이렇게 2개 이상의 Variable을 가지는 function에 대한 Differentiation을 Partial differentiation이라고 한다.
 
-    기존의 Differentiation은 $\frac{\text{d}f(x)}{\text{d}x}$ 으로 표현하였지만 Partial Differentiation은 \frac{\partial f}{\partial x_{0}} , \frac{\partial f}{\partial x_{1}} 으로 표현된다.
+    기존의 Differentiation은 $\frac{\text{d}f(x)}{\text{d}x}$ 으로 표현하였지만 Partial Differentiation은 $\frac{\partial f}{\partial x_{0}} , \frac{\partial f}{\partial x_{1}}$ 으로 표현된다.
 
     Partial Differentiation에서는 현재 Differentiation 할 Variable 이외의 Variable은 Constant로 취급한다.
 
@@ -489,14 +489,10 @@ Gradient descending은 Cost function의 Gradient값을 기준으로 Weight와 bi
     w_{21} & w_{22} & w_{23}
     \end{pmatrix}$
 
-    $
-    \frac{\partial L}{\partial W} =\begin{pmatrix} 
-   \frac{\partial L}{\partial w_{11}} & \frac{\partial L}{\partial w_{12}} & \frac{\partial L}{\partial w_{13}}\\
-   \frac{\partial L}{\partial w_{21}} & \frac{\partial L}{\partial w_{22}} & \frac{\partial L}{\partial w_{23}}
-    \end{pmatrix}
-    $
+    $\frac{\partial L}{\partial W} = 
+\left(\begin{array}{c} \frac{\partial L}{\partial w_{11}} & \frac{\partial L}{\partial w_{12}} & \frac{\partial L}{\partial w_{13}}\\ \frac{\partial L}{\partial w_{21}} & \frac{\partial L}{\partial w_{22}} & \frac{\partial L}{\partial w_{23}}\end{array}\right)$
 
-    $\frac{\partial L}{\partial W}$ 의 각 원소는 각각의 원소에 대한 Partial Differentiation이다. 예를 들어 $frac{\partial L}{\partial w_{11}}$ 은 $w_{11}$을 변경하였을 때 L이 얼마나 변하는지를 나타낸다.
+    $\frac{\partial L}{\partial W}$의 각 원소는 각각의 원소에 대한 Partial Differentiation이다. 예를 들어 $\frac{\partial L}{\partial w_{11}}$ 은 $w_{11}$을 변경하였을 때 L이 얼마나 변하는지를 나타낸다.
 
 
 
