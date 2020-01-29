@@ -383,7 +383,7 @@ Backpropagation의 이해를 위해 Computational graph와 Chain rule을 우선�
 
 3. Softmax
 
-    마지막으로 Output layer에서 사용하는 softmax function의 backpropagatio을 구해보도록 하자.
+    마지막으로 Output layer에서 사용하는 softmax function의 back propagation을 구해보도록 하자.
 
     sofmax function은 Input을 Normalize하여 출력한다.
 
@@ -393,150 +393,50 @@ Backpropagation의 이해를 위해 Computational graph와 Chain rule을 우선�
 
     ![swc](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile29.uf.tistory.com%2Fimage%2F99EBF5395B98F7792B42CE)
 
-    Softmax_with_Loss layer의 Computatonal graph는 앞서 다룬 graph들과 달리 다소 복잡하다. 이를 간소화 하면 아래와 같은 graph를 얻을 수 있다.
+    Softmax_with_Loss layer의 Computational graph는 앞서 다룬 graph들과 달리 다소 복잡하다. 이를 간소화 하면 아래와 같은 graph를 얻을 수 있다.
 
     ![eas](https://camo.githubusercontent.com/3ff916b571f5034ee612ddf4a756d3bc892580a7/68747470733a2f2f692e696d6775722e636f6d2f656f72787978642e706e67)
 
-    간소화된 graph는 3 class classification을 가정한것이다. softmax는 input a를 받아 normalize하여 output y를 출력한다 cross entry는 input y와 Answer label t를 받아 이들로 부터 cost L을 계산한다.
+    간소화된 graph는 3 class classification을 가정한것이다.
     
-4. Gradient descent method
+     softmax는 input a를 받아 normalize하여 output y를 출력한다 cross entry는 input y와 Answer label t를 받아 이들로 부터 cost L을 계산한다.
 
-    우리는 Neural network의 cost function이 minimum value를 가지게 하는 Weight와 Bias 값을 찾아야 한다.
-
-    하지만 cost function은 일반적으로 매우 복잡하고, Parameter space가 복잡하여 minimum value를 찾기가 쉽지 않다.
-
-    이를 해결하기 위해 Gradient를 이용하여 function의 minimum에 최대한 가까운 값을 찾기 위해 사용되는 방법이 Gradient descent method이다.
-
-    하지만 Gradient descent method에서는 Gradient가 0인 지점이 항상 function의 minimum value라는 보장이 없다는 것이다.
-
-    ![grad](https://www.safaribooksonline.com/library/view/hands-on-machine-learning/9781491962282/assets/mlst_0405.png)
-
-    위 사진 처럼 Gradient가 0인 지점은 minimum value 일 수도 있고, local minimum point 혹은 saddle point 일수도 있기 때문이다.
-
-    복잡한 모양의 function의 경우 plateau라고 하는 평평한, Training이 거의 진행되지 않는 구간도 존재할 수 있다.
-
-    그럼에도 불구하고, Gradient descent method는 Minimum value를 찾을 수 있는 가장 효율적인 방법중 하나이기 때문에 널리 사용되고 있다.
-
-    Gradient descent method는 다음의 과정으로 진행된다.
-
-    현재의 Gradient를 구하고 이를 기점삼아 일정 거리만큼 이동한다.
-
-    이후 이동한 위치에서의 Gradient를 구하고 이동하는 과정을 반복한다.
-
-    이를 수식으로 나타내면 다음과 같다.
-
-    $x_k = x_k - \eta\frac{\partial f}{\partial x_{k}}$
-
-    위 수식중 기호 $\eta$ 는 Learning rate를 나타내는 기호이다.
-
-    Learning rate는 한 번의 학습으로 얼마만큼 학습할지, 즉 Parameter를 얼마나 갱신 할지를 결정하는 Parameter이다.
-
-    Learning rate는 0.1 또는 0.001과 같이 사용자가 미리 특정한 값을 지정해야 한다.
-
-    Learning rate는 Weight나 Bias와 같이 Neural network가 Training을 통해 스스로 값을 결정하는 Parameter와 달리 사람이 직접 설정해야 하는 Parameter이다.
-
-    이러한 Parameter를 Hyper Parameter라고 한다. Hyper Parameter는 여러번의 실험을 거쳐 최적의 값을 찾는 과정을 필요로 한다.
-
-    일반적으로 Learning rate의 값이 너무 크거나 작으면 Minimum value를 찾아갈 수 없다.
-
-    ![lr](https://jaehyeongan.github.io/image/learning_rate_sl.png)
-
-    위의 예처럼 Learning rate가 너무 작으면 Weight와 Bias를 갱신하는데 너무 많은 시간이 요구되고, 여러번 학습을 하더라도 거의 변화가 이루어지지 않는다.
-
-    반대로 Learning rate가 너무 크면 Cost가 감소하지 않고, 증가하는 Overshooting이 발생할 수 있기 때문에 적절한 값을 사용해야 한다.
-
-    아래는 Gradient descent method와 적용 예를 Python으로 구현한것이다.
-
+    여기서 주목할 점은 softmax의 back propagation의 결과이다. 결과는 각각 $(y_1 - t_1, y_2 - t_2, y_3, t_3)$ 이다. 
+    
+    이는 Answer label과 result간의 차이를 뜻한다. 이 차이를 통해 Neural network를 조절하게 된다. 이를 코드로 구현하면 아래와 같다.
 
     ```python
-      def gradient_descent(f, init_x, lr =0.01, step_num=100):
-        x = init_x
+      class SoftmaxWithLoss:
+        def __init__(self):
+          self.loss = None
+          self.y = None
+          self.x = None
 
-        for i in range(step_num):
-          grad = numerical_gradient(f,x)
-          x -= lr * grad
+        def forward(self, x, t):
+          self.t = t
+          self.y = softmax(x)
+          self.loss = cross_entropy_error(self.y, self.t)
 
-        return x
-    ```
-
-    Argument f는 cost function, init_x는 초기값, lr은 Learning rate, step_num은 반복횟수이다.
-
-    아래는 이를 적용하여 $f(x_0, x_1) = x_0^2 + x_1 ^2$ 의 Minimum value를 찾는 예이다.
-
-    ```python
-      import numpy as np
-      def gradient_descent(f, init_x, lr =0.01, step_num=100):
-        x = init_x
-      
-        for i in range(step_num):
-          grad = numerical_gradient(f,x)
-          x -= lr * grad
+          return self.loss
         
-        return x
+        def backward(self, dout = 1):
+          batch_size = self.t.shape[0]
+          dx = (self.y - self.t) / batch_size
 
-      def function_2(x):
-        return x[0]**2 + x[1]**2
-
-      def numerical_gradient(f,x):
-        h = 1e-4
-        grad = np.zeros_like(x)
+          return dx
+    ```
     
-        for idx in range(x.size):
-          tmp_val = x[idx]
-        
-          x[idx] = tmp_val + h
-          fxh1 = f(x)
+4. Gradient check
 
-          x[idx] = tmp_val - h
-          fxh2 = f(x)
-        
-          grad[idx] = (fxh1 - fxh2) / (2 * h)
+    지금까지 gradient를 구하는 두가지 방법인 Numerical Differentiation과 Backpropagation에 대해 알아보았다.
 
-          x[idx] = tmp_val
-        
-        return grad
+    Numerical Differentiation은 구현하기 쉽지만 느리다는 단점이 있다. 이러한 이유때문에 Backpropagation을 사용할것이다.
 
-      init_x = np.array([-3.0, 4.0])
-      gradient_descent(function_2, init_x=init_x, lr=0.1, step_num=100)
-      #array([-6.11110793e-10,  8.14814391e-10])
-    ```
+    그렇다면 Numerical Differentiation은 더이상 필요가 없는것일까?
 
-    결과는 (-6.1e-10, 8.1e-10)으로 실제 Minimum value인 (0,0)에 상당히 가까운 값을 보인다.
+    Numerical Differentiation은 Backpropagation이 잘 이루어 졌는지 검증하기 위해 사용된다. 
 
-    ![method](https://2.bp.blogspot.com/-ocZJ6T_Nf7A/WZ53x63h9jI/AAAAAAAAAJ4/3gGtOmhSEUYmmNEzMKaaBZOeYFBOOBUsQCLcBGAs/s1600/sgd_1.png)
+    Backpropagation은 빠르지만 구조가 복합하면 구현하기 복잡하기 때문에 종종 실수가 발생하곤 한다. 그래서 Numerical Differentiation과 Backpropagation의 결과를 비교하여 Backpropagation이 버그없이 잘 구현 되었는지 검증하는데 이러한 절차를 Gradient check이라고 한다.
 
-    위의 사진과 같은 절차로 $x_0, x_1$ 의 값이 갱신되며 점차 (0,0)에 가까워지는 모습을 보인다.
-
-5. Neural Network에서의 Gradient
-
-    지금까지 Neural Network의 최적의 Parameter 값을 찾기위한 방법인 Gradient descent method에 대해 알아보았다.
-
-    이제 이를 실제 Neural Network에 적용하는 방법을 알아보고 직접 실습해 보도록 하겠다.
-
-    Neural Network에서의 Gradient는 Weight Parameter에 대한 cost function의 Gradient를 뜻한다.
-
-    예를들어 shape가 2x3, Weight가 W, Cost function이 L인 Neural Network가 있다고 가정하자.
-
-    이경우 Gradient는 $\frac{\partial L}{\partial W}$ 으로 나타낼 수 있고 다음과 같은 수식으로 표현된다.
-
-    $W =\begin{pmatrix} 
-    w_{11} & w_{12} & w_{13}\\
-    w_{21} & w_{22} & w_{23}
-    \end{pmatrix}$
-
-    $\frac{\partial L}{\partial W} =\begin{pmatrix} 
-   \frac{\partial L}{\partial w_{11}} & \frac{\partial L}{\partial w_{12}} & \frac{\partial L}{\partial w_{13}}
-   \frac{\partial L}{\partial w_{21}} & \frac{\partial L}{\partial w_{22}} & \frac{\partial L}{\partial w_{23}}
-    \end{pmatrix}
-    $
-
-    $\frac{\partial L}{\partial W}$ 의 각 원소는 각각의 원소에 대한 Partial Differentiation이다. 예를 들어 $frac{\partial L}{\partial w_{11}}$ 은 $w_{11}$을 변경하였을 때 L이 얼마나 변하는지를 나타낸다.
-
-
-
-
-
-
-
-  
+    
 
